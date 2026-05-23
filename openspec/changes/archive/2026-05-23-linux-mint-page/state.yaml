@@ -1,0 +1,29 @@
+name: linux-mint-page
+status: archived
+current_phase: archive
+phases:
+  explore:
+    status: completed
+    path: openspec/changes/archive/2026-05-23-linux-mint-page/exploration.md
+  proposal:
+    status: completed
+    path: openspec/changes/archive/2026-05-23-linux-mint-page/proposal.md
+  spec:
+    status: completed
+    path: openspec/changes/archive/2026-05-23-linux-mint-page/spec.md
+  design:
+    status: completed
+    path: openspec/changes/archive/2026-05-23-linux-mint-page/design.md
+  tasks:
+    status: completed
+    path: openspec/changes/archive/2026-05-23-linux-mint-page/tasks.md
+  apply:
+    status: completed
+    path: openspec/changes/archive/2026-05-23-linux-mint-page/apply-progress.md
+  verify:
+    status: completed
+    path: openspec/changes/archive/2026-05-23-linux-mint-page/verify-report.md
+  archive:
+    status: completed
+    path: openspec/changes/archive/2026-05-23-linux-mint-page/archive-report.md
+

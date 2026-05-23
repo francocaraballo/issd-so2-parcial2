@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es" class="theme-dark dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linux Mint 22 Cinnamon - Simulador Interactivo</title>
+  <!-- Tailwind CSS v4 CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Local Custom Stylesheet -->
+  <link rel="stylesheet" href="index.css">
+  <script>
+    // Configure Tailwind theme overrides if needed
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            mint: {
+              DEFAULT: '#8fae53',
+              dark: '#7b9846',
+              light: '#a6c66d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors duration-150">
+
+  <!-- Desktop Environment -->
+  <div id="desktop" class="relative w-screen h-screen overflow-hidden select-none" style="background: var(--wallpaper);">
+    
+    <!-- Right-Click Context Menu -->
+    <div id="desktop-context-menu" class="hidden absolute w-56 glass text-slate-800 dark:text-slate-200 rounded-lg shadow-xl py-1 text-sm z-[9999999] border border-white/20 dark:border-white/10">
+      <div class="px-3 py-1.5 text-xs font-semibold text-slate-400 border-b border-white/10 select-none">Acciones de Escritorio</div>
+      <button onclick="window.spawnApp('settings')" class="w-full text-left px-4 py-2 hover:bg-mint/20 hover:text-slate-900 dark:hover:text-white flex items-center gap-2">
+        <svg class="w-4 h-4 text-mint" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        Cambiar Fondo y Color de Énfasis
+      </button>
+      <button onclick="window.spawnApp('terminal')" class="w-full text-left px-4 py-2 hover:bg-mint/20 hover:text-slate-900 dark:hover:text-white flex items-center gap-2">
+        <svg class="w-4 h-4 text-mint" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        Abrir Terminal
+      </button>
+      <button onclick="window.spawnApp('nemo')" class="w-full text-left px-4 py-2 hover:bg-mint/20 hover:text-slate-900 dark:hover:text-white flex items-center gap-2">
+        <svg class="w-4 h-4 text-mint" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+        Abrir Gestor de Archivos
+      </button>
+      <div class="h-px bg-white/10 my-1"></div>
+      <button onclick="location.reload()" class="w-full text-left px-4 py-2 hover:bg-mint/20 hover:text-slate-900 dark:hover:text-white flex items-center gap-2">
+        <svg class="w-4 h-4 text-mint" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H18"/></svg>
+        Recargar Simulador
+      </button>
+    </div>
+
+    <!-- Desktop Icons Grid -->
+    <div id="desktop-grid" class="absolute top-6 left-6 grid grid-flow-col auto-cols-[86px] grid-rows-[repeat(auto-fill,112px)] gap-6 z-10 pointer-events-auto">
+      <!-- Desktop icons will be dynamically rendered in app.js -->
+    </div>
+
+    <!-- Window Spawn Zone (Interactive container for all windows) -->
+    <div id="window-zone" class="absolute inset-0 pb-12 pointer-events-none z-20">
+      <!-- Spawned app-windows will go here -->
+    </div>
+
+    <!-- Cinnamon Menu (Start Menu) -->
+    <div id="mint-menu" class="hidden absolute left-2 bottom-14 w-[480px] h-[520px] rounded-lg shadow-2xl flex flex-col z-[999998] border border-slate-200/50 dark:border-slate-800/40 glass text-slate-800 dark:text-slate-100 overflow-hidden window-opening">
+      <!-- Search Bar -->
+      <div class="p-4 border-b border-slate-200/40 dark:border-slate-800/40">
+        <div class="relative">
+          <input type="text" id="menu-search" placeholder="Buscar..." class="w-full px-4 py-2 pl-10 bg-slate-100/50 dark:bg-slate-900/50 border border-slate-300/40 dark:border-slate-700/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-mint focus:border-transparent text-sm">
+          <span class="absolute left-3.5 top-3.5 text-slate-400">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </span>
+        </div>
+      </div>
+      
+      <!-- Split Categories / Apps -->
+      <div class="flex-1 flex overflow-hidden">
+        <!-- Sidebar Categories -->
+        <div class="w-40 border-r border-slate-200/40 dark:border-slate-800/40 py-2 flex flex-col justify-between bg-slate-100/30 dark:bg-slate-950/20">
+          <div class="flex flex-col gap-0.5 px-1" id="menu-categories">
+            <!-- Dynamic Categories -->
+          </div>
+          <!-- System Quick Info/Actions -->
+          <div class="px-3 py-2 flex flex-col gap-1 border-t border-slate-200/40 dark:border-slate-800/40 text-xs text-slate-500">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>Linux Mint 22</span>
+            </div>
+            <div>Escritorio Cinnamon</div>
+          </div>
+        </div>
+
+        <!-- Application List Grid/Scroll -->
+        <div class="flex-1 overflow-y-auto p-3" id="menu-apps-list">
+          <!-- Dynamic apps will be rendered here based on selected category and search term -->
+        </div>
+      </div>
+
+      <!-- Menu Footer (Power buttons and Profile info) -->
+      <div class="h-14 bg-slate-100/60 dark:bg-slate-950/40 px-4 py-2 border-t border-slate-200/40 dark:border-slate-800/40 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <!-- User Profile -->
+          <div class="w-8 h-8 rounded-full bg-mint flex items-center justify-center text-white font-bold text-sm shadow-md">
+            M
+          </div>
+          <div class="text-sm font-semibold">mint-invitado</div>
+        </div>
+        <div class="flex gap-2">
+          <button onclick="window.spawnApp('settings')" title="Preferencias del Sistema" class="p-2 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg text-slate-600 dark:text-slate-300 transition-colors">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </button>
+          <button onclick="window.lockScreenSimulator()" title="Bloquear Pantalla" class="p-2 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg text-slate-600 dark:text-slate-300 transition-colors">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </button>
+          <button onclick="window.shutdownSimulator()" title="Apagar el Sistema (Simulado)" class="p-2 hover:bg-red-500/25 dark:hover:bg-red-500/25 hover:text-red-500 rounded-lg text-slate-600 dark:text-slate-300 transition-colors">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.907c.961 0 1.36 1.246.588 1.81l-3.97 2.883a1 1 0 00-.364 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.971-2.883a1 1 0 00-1.17 0l-3.97 2.883c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.49 10.1c-.773-.564-.373-1.81.588-1.81h4.907a1 1 0 00.95-.69l1.52-4.674z" /></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cinnamon Bottom Panel -->
+    <div id="panel" class="absolute bottom-0 left-0 right-0 h-12 glass-panel flex justify-between items-center z-[999999] border-t border-slate-300/30 dark:border-slate-800/30 text-slate-800 dark:text-slate-100 select-none shadow-lg">
+      <div class="flex items-center h-full px-1 gap-1">
+        <!-- Mint Menu Button -->
+        <button id="mint-menu-btn" class="h-10 px-3 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded flex items-center gap-1.5 transition-colors focus:outline-none">
+          <!-- Mint Logo SVG -->
+          <svg class="w-6 h-6 text-mint" viewBox="0 0 100 100" fill="currentColor">
+            <path d="M 50 10 C 27.9 10 10 27.9 10 50 C 10 72.1 27.9 90 50 90 C 72.1 90 90 72.1 90 50 C 90 27.9 72.1 10 50 10 Z M 50 18 C 67.7 18 82 32.3 82 50 C 82 67.7 67.7 82 50 82 C 32.3 82 18 67.7 18 50 C 18 32.3 32.3 18 50 18 Z M 48 30 C 40 30 36 34 36 42 L 36 60 L 44 60 L 44 42 C 44 38 46 38 48 38 C 50 38 52 38 52 42 L 52 60 L 60 60 L 60 42 C 60 34 56 30 48 30 Z"/>
+          </svg>
+          <span class="font-bold text-xs uppercase tracking-wider text-slate-800 dark:text-slate-100">Menú</span>
+        </button>
+
+        <!-- Vertical Separator -->
+        <div class="h-6 w-px bg-slate-300/50 dark:bg-slate-700/50 mx-1"></div>
+
+        <!-- Quick Launch Icons -->
+        <div id="quick-launch" class="flex gap-0.5 items-center">
+          <!-- Dynamically filled, but starts with Terminal, Nemo, Settings -->
+        </div>
+
+        <!-- Vertical Separator -->
+        <div class="h-6 w-px bg-slate-300/50 dark:bg-slate-700/50 mx-1"></div>
+
+        <!-- Dynamic Taskbar Items -->
+        <div id="taskbar-items" class="flex gap-1 h-full py-1 items-center">
+          <!-- Dynamically filled with running window icons/labels -->
+        </div>
+      </div>
+
+      <!-- System Tray -->
+      <div id="system-tray" class="flex items-center h-full px-3 gap-3 text-slate-700 dark:text-slate-300 text-xs">
+        
+        <!-- Status Icons -->
+        <div class="flex items-center gap-2">
+          <!-- Network Icon -->
+          <button title="Red Conectada" class="p-1.5 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded transition-colors cursor-pointer">
+            <svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </button>
+          
+          <!-- Volume Icon -->
+          <button title="Volumen 100%" class="p-1.5 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded transition-colors cursor-pointer">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+            </svg>
+          </button>
+          
+          <!-- Power Icon -->
+          <button title="Batería Cargada" class="p-1.5 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded transition-colors cursor-pointer">
+            <svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Vertical Separator -->
+        <div class="h-6 w-px bg-slate-300/50 dark:bg-slate-700/50 mx-0.5"></div>
+
+        <!-- Real-Time Clock -->
+        <div id="clock" class="font-medium hover:bg-slate-200/50 dark:hover:bg-slate-800/50 px-2 py-1 rounded transition-colors cursor-pointer">
+          --:-- --
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Shutdown Overlay (Simulated) -->
+  <div id="shutdown-screen" class="hidden fixed inset-0 bg-black z-[99999999] flex flex-col items-center justify-center text-white transition-opacity duration-1000 opacity-0 pointer-events-none">
+    <div class="flex flex-col items-center gap-6">
+      <svg class="w-16 h-16 text-mint animate-pulse" viewBox="0 0 100 100" fill="currentColor">
+        <path d="M 50 10 C 27.9 10 10 27.9 10 50 C 10 72.1 27.9 90 50 90 C 72.1 90 90 72.1 90 50 C 90 27.9 72.1 10 50 10 Z M 50 18 C 67.7 18 82 32.3 82 50 C 82 67.7 67.7 82 50 82 C 32.3 82 18 67.7 18 50 C 18 32.3 32.3 18 50 18 Z M 48 30 C 40 30 36 34 36 42 L 36 60 L 44 60 L 44 42 C 44 38 46 38 48 38 C 50 38 52 38 52 42 L 52 60 L 60 60 L 60 42 C 60 34 56 30 48 30 Z"/>
+      </svg>
+      <div class="text-lg font-semibold tracking-wider text-slate-300">Apagando Linux Mint...</div>
+      <button onclick="window.rebootSimulator()" class="mt-8 px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-sm border border-slate-700/50 transition-all font-medium">Reiniciar Sistema</button>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- WINDOW FRAME TEMPLATE                          -->
+  <!-- ============================================== -->
+  <template id="window-template">
+    <div class="app-window glass w-[640px] h-[440px] shadow-2xl flex flex-col rounded-lg border border-slate-200/50 dark:border-slate-800/40 select-none text-slate-800 dark:text-slate-100 window-opening">
+      
+      <!-- Resize Handles -->
+      <div class="window-resizer resizer-n" data-direction="n"></div>
+      <div class="window-resizer resizer-s" data-direction="s"></div>
+      <div class="window-resizer resizer-e" data-direction="e"></div>
+      <div class="window-resizer resizer-w" data-direction="w"></div>
+      <div class="window-resizer resizer-nw" data-direction="nw"></div>
+      <div class="window-resizer resizer-ne" data-direction="ne"></div>
+      <div class="window-resizer resizer-sw" data-direction="sw"></div>
+      <div class="window-resizer resizer-se" data-direction="se"></div>
+
+      <!-- Title Bar -->
+      <div class="window-titlebar h-10 flex items-center justify-between px-3 bg-slate-100/80 dark:bg-slate-900/60 border-b border-slate-200/50 dark:border-slate-800/40 cursor-default flex-shrink-0 select-none">
+        <div class="flex items-center gap-2 pointer-events-none flex-1 truncate">
+          <div class="window-app-icon w-5 h-5 flex items-center justify-center text-slate-600 dark:text-slate-400">
+            <!-- Dynamic App Icon SVG -->
+          </div>
+          <span class="window-title text-xs font-semibold select-none text-slate-700 dark:text-slate-300 truncate">Aplicación</span>
+        </div>
+        
+        <!-- Window Controls -->
+        <div class="flex items-center gap-1.5 ml-2 pointer-events-auto">
+          <!-- Minimize Button -->
+          <button class="w-6 h-6 rounded-full hover:bg-slate-200/60 dark:hover:bg-slate-800/60 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors" data-control="minimize" title="Minimizar">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20 12H4" />
+            </svg>
+          </button>
+          <!-- Maximize Button -->
+          <button class="w-6 h-6 rounded-full hover:bg-slate-200/60 dark:hover:bg-slate-800/60 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors" data-control="maximize" title="Maximizar">
+            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4h16v16H4V4z" />
+            </svg>
+          </button>
+          <!-- Close Button -->
+          <button class="w-6 h-6 rounded-full hover:bg-red-500/20 dark:hover:bg-red-500/25 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 transition-colors" data-control="close" title="Cerrar">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Window Content Container -->
+      <div class="window-content flex-1 flex flex-col min-h-0 bg-white/95 dark:bg-slate-900/95 overflow-hidden select-none pointer-events-auto">
+        <!-- Application-specific UI goes here -->
+      </div>
+    </div>
+  </template>
+
+  <!-- ============================================== -->
+  <!-- APPLICATION CONTENT TEMPLATES                  -->
+  <!-- ============================================== -->
+
+  <!-- Terminal Content Template -->
+  <template id="app-terminal">
+    <div class="flex-1 flex flex-col min-h-0 bg-slate-950 font-mono text-emerald-400 p-2 text-sm overflow-hidden select-text pointer-events-auto">
+      <div class="terminal-history flex-1 overflow-y-auto flex flex-col gap-1 pr-1 pointer-events-auto">
+        <div class="text-xs text-slate-500 select-none pb-2 border-b border-slate-900/60 font-sans">
+          Bienvenido a la Terminal de Cinnamon. Escribí 'help' para ver la lista de comandos simulados.
+        </div>
+        <!-- History items dynamically added here -->
+      </div>
+      <div class="flex items-center gap-1.5 mt-1 pt-1.5 border-t border-slate-900/50 flex-shrink-0">
+        <span class="text-emerald-500 font-bold select-none flex-shrink-0">mint@cinnamon:~$</span>
+        <input type="text" class="terminal-input flex-grow bg-transparent border-none outline-none focus:ring-0 text-emerald-400 font-mono text-sm p-0 m-0 caret-emerald-400" autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+  </template>
+
+  <!-- Nemo File Manager Content Template -->
+  <template id="app-nemo">
+    <div class="flex-grow flex flex-col min-h-0 text-sm overflow-hidden select-none select-none bg-slate-50 dark:bg-slate-900">
+      <!-- Toolbar / Breadcrumbs -->
+      <div class="h-11 flex items-center justify-between px-3 bg-slate-100 dark:bg-slate-950/40 border-b border-slate-200 dark:border-slate-800/40 flex-shrink-0">
+        <div class="flex items-center gap-2 flex-grow">
+          <!-- Back button -->
+          <button class="nemo-back-btn p-1.5 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded disabled:opacity-40" disabled title="Atrás">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+          </button>
+          
+          <!-- Path Breadcrumb Area -->
+          <div class="flex-grow bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded px-2.5 py-1 text-xs text-slate-600 dark:text-slate-300 font-medium flex items-center gap-1 overflow-x-auto max-w-[400px]">
+            <span class="text-slate-400">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            </span>
+            <span class="text-slate-400">/</span>
+            <span class="nemo-breadcrumbs flex items-center gap-1"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Layout: Sidebar & Files Grid -->
+      <div class="flex-1 flex overflow-hidden">
+        <!-- Sidebar Panel -->
+        <div class="w-40 border-r border-slate-200 dark:border-slate-800/40 bg-slate-100/40 dark:bg-slate-950/20 py-2 flex-shrink-0 overflow-y-auto">
+          <div class="px-3 mb-1 text-[11px] font-bold tracking-wider text-slate-400 uppercase select-none">Lugares</div>
+          <div class="flex flex-col gap-0.5 px-1.5" id="nemo-sidebar-links">
+            <!-- Sidebar links filled dynamically -->
+          </div>
+        </div>
+
+        <!-- Files Display Area -->
+        <div class="flex-1 bg-white dark:bg-slate-900 p-4 overflow-y-auto pointer-events-auto">
+          <div class="grid grid-cols-[repeat(auto-fill,76px)] auto-rows-max gap-x-4 gap-y-6 justify-start" id="nemo-files-grid">
+            <!-- Dynamic files will be rendered here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <!-- System Settings Content Template -->
+  <template id="app-settings">
+    <div class="flex-grow flex flex-col min-h-0 bg-slate-50 dark:bg-slate-900 text-sm overflow-hidden select-none">
+      
+      <!-- Settings Tabs -->
+      <div class="flex-1 flex overflow-hidden">
+        <!-- Sidebar Navigation -->
+        <div class="w-44 border-r border-slate-200 dark:border-slate-800/40 bg-slate-100/40 dark:bg-slate-950/20 py-2 flex-shrink-0">
+          <div class="px-4 mb-2 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Preferencias</div>
+          <div class="flex flex-col gap-0.5 px-2" id="settings-nav">
+            <button class="settings-nav-item w-full text-left px-3 py-2 rounded-md hover:bg-slate-200/50 dark:hover:bg-slate-800/50 font-medium text-xs flex items-center gap-2 bg-mint/15 text-mint dark:text-mint-light" data-tab="appearance">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+              Apariencia y Estilos
+            </button>
+            <button class="settings-nav-item w-full text-left px-3 py-2 rounded-md hover:bg-slate-200/50 dark:hover:bg-slate-800/50 font-medium text-xs flex items-center gap-2 text-slate-600 dark:text-slate-300" data-tab="system-info">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Información del Sistema
+            </button>
+          </div>
+        </div>
+
+        <!-- Scrollable Settings Panel -->
+        <div class="flex-1 overflow-y-auto p-5" id="settings-panes">
+          
+          <!-- TAB: Appearance -->
+          <div id="settings-pane-appearance" class="settings-pane flex flex-col gap-6">
+            <div>
+              <h3 class="text-base font-bold text-slate-800 dark:text-slate-100">Apariencia y Personalización de Temas</h3>
+              <p class="text-xs text-slate-400 mt-1">Personalizá la experiencia de tu escritorio Cinnamon al instante.</p>
+            </div>
+
+            <!-- Accent Color Picker -->
+            <div class="flex flex-col gap-2.5">
+              <label class="text-xs font-semibold uppercase tracking-wider text-slate-400">Color de Énfasis del Sistema</label>
+              <div class="flex gap-3" id="settings-accent-colors">
+                <!-- Accents dynamically added -->
+              </div>
+            </div>
+
+            <!-- Desktop Background Picker -->
+            <div class="flex flex-col gap-2.5">
+              <label class="text-xs font-semibold uppercase tracking-wider text-slate-400">Fondo de Escritorio</label>
+              <div class="grid grid-cols-3 gap-3" id="settings-backgrounds">
+                <!-- Backgrounds dynamically added -->
+              </div>
+            </div>
+
+            <!-- Global Mode Switcher -->
+            <div class="flex flex-col gap-2">
+              <label class="text-xs font-semibold uppercase tracking-wider text-slate-400">Tema de Ventanas</label>
+              <div class="flex items-center justify-between p-3.5 bg-white dark:bg-slate-950/30 border border-slate-200 dark:border-slate-800/40 rounded-lg shadow-sm">
+                <div>
+                  <div class="text-sm font-semibold text-slate-700 dark:text-slate-200">Integración de Modo Oscuro</div>
+                  <div class="text-xs text-slate-400">Activar o desactivar las hojas de estilo oscuras en las aplicaciones.</div>
+                </div>
+                <!-- Toggle Switch -->
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" id="settings-theme-toggle" class="sr-only peer">
+                  <div class="w-11 h-6 bg-slate-200 dark:bg-slate-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-mint"></div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: System Info -->
+          <div id="settings-pane-system-info" class="settings-pane hidden flex flex-col gap-5">
+            <div>
+              <h3 class="text-base font-bold text-slate-800 dark:text-slate-100">Detalles del Sistema</h3>
+              <p class="text-xs text-slate-400 mt-0.5">Especificaciones de software y hardware para el simulador.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center gap-6 p-5 bg-white dark:bg-slate-950/30 border border-slate-200 dark:border-slate-800/40 rounded-lg shadow-sm">
+              <div class="w-20 h-20 text-mint flex-shrink-0 flex items-center justify-center">
+                <!-- Large Mint Logo -->
+                <svg class="w-16 h-16" viewBox="0 0 100 100" fill="currentColor">
+                  <path d="M 50 10 C 27.9 10 10 27.9 10 50 C 10 72.1 27.9 90 50 90 C 72.1 90 90 72.1 90 50 C 90 27.9 72.1 10 50 10 Z M 50 18 C 67.7 18 82 32.3 82 50 C 82 67.7 67.7 82 50 82 C 32.3 82 18 67.7 18 50 C 18 32.3 32.3 18 50 18 Z M 48 30 C 40 30 36 34 36 42 L 36 60 L 44 60 L 44 42 C 44 38 46 38 48 38 C 50 38 52 38 52 42 L 52 60 L 60 60 L 60 42 C 60 34 56 30 48 30 Z"/>
+                </svg>
+              </div>
+              <div class="flex-grow flex flex-col gap-2 w-full text-xs font-medium">
+                <div class="flex justify-between py-1 border-b border-slate-100 dark:border-slate-800/60">
+                  <span class="text-slate-400">Nombre del S.O.</span>
+                  <span class="text-slate-800 dark:text-slate-200">Linux Mint 22 (Wilma)</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-slate-100 dark:border-slate-800/60">
+                  <span class="text-slate-400">Versión de Cinnamon</span>
+                  <span class="text-slate-800 dark:text-slate-200">6.2.2</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-slate-100 dark:border-slate-800/60">
+                  <span class="text-slate-400">Kernel de Linux</span>
+                  <span class="text-slate-800 dark:text-slate-200">6.8.0-31-generic</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-slate-100 dark:border-slate-800/60">
+                  <span class="text-slate-400">Procesador</span>
+                  <span class="text-slate-800 dark:text-slate-200">Intel® Core™ i7 Virtual de la Web CPU @ 3.40GHz × 4</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-slate-100 dark:border-slate-800/60">
+                  <span class="text-slate-400">Memoria (RAM)</span>
+                  <span class="text-slate-800 dark:text-slate-200">16.0 GiB de RAM Simulada</span>
+                </div>
+                <div class="flex justify-between py-1">
+                  <span class="text-slate-400">Motor Gráfico</span>
+                  <span class="text-slate-800 dark:text-slate-200">Renderizado Acelerado por Canvas HTML5 / CSS3 WebGPU</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <!-- Xed Text Editor Content Template -->
+  <template id="app-xed">
+    <div class="flex-grow flex flex-col min-h-0 bg-white dark:bg-slate-900 text-sm overflow-hidden select-none">
+      <!-- Menu Bar -->
+      <div class="h-8 bg-slate-100 dark:bg-slate-950/40 border-b border-slate-200 dark:border-slate-800/40 px-3 flex items-center gap-3 text-xs text-slate-600 dark:text-slate-300 flex-shrink-0 font-medium">
+        <button class="hover:bg-slate-200 dark:hover:bg-slate-800 px-2 py-0.5 rounded cursor-pointer">Archivo</button>
+        <button class="hover:bg-slate-200 dark:hover:bg-slate-800 px-2 py-0.5 rounded cursor-pointer">Editar</button>
+        <button class="hover:bg-slate-200 dark:hover:bg-slate-800 px-2 py-0.5 rounded cursor-pointer">Ver</button>
+        <button class="hover:bg-slate-200 dark:hover:bg-slate-800 px-2 py-0.5 rounded cursor-pointer">Buscar</button>
+        <button class="hover:bg-slate-200 dark:hover:bg-slate-800 px-2 py-0.5 rounded cursor-pointer" id="xed-save-btn">Guardar</button>
+      </div>
+      <!-- Editor Area -->
+      <div class="flex-1 min-h-0 flex pointer-events-auto">
+        <!-- Line Numbers Column -->
+        <div class="w-10 bg-slate-50 dark:bg-slate-950/20 text-slate-400 dark:text-slate-600 border-r border-slate-200 dark:border-slate-800/40 py-2 text-right pr-2 text-xs font-mono select-none">
+          1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15
+        </div>
+        <!-- Editor Input -->
+        <textarea class="xed-textarea flex-1 p-2 bg-transparent text-slate-800 dark:text-slate-100 font-mono text-xs border-none outline-none focus:ring-0 resize-none select-text caret-slate-800 dark:caret-white" placeholder="Comenzá a escribir acá..."></textarea>
+      </div>
+      <!-- Status Bar -->
+      <div class="h-6 bg-slate-100 dark:bg-slate-950/40 border-t border-slate-200 dark:border-slate-800/40 px-3 flex items-center justify-between text-[10px] text-slate-500 flex-shrink-0 select-none">
+        <span class="xed-status-msg">Editor de Archivos UTF-8</span>
+        <span class="xed-coords-msg">Lín 1, Col 1</span>
+      </div>
+    </div>
+  </template>
+
+  <!-- Firefox Web Browser Content Template -->
+  <template id="app-firefox">
+    <div class="flex-grow flex flex-col min-h-0 bg-white dark:bg-slate-900 text-sm overflow-hidden select-none">
+      <div class="h-10 bg-slate-100 dark:bg-slate-950/40 border-b border-slate-200 dark:border-slate-800/40 px-3 flex items-center gap-2 flex-shrink-0">
+        <div class="w-3.5 h-3.5 text-slate-400">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+        </div>
+        <div class="flex-grow bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/40 rounded px-2 py-0.5 text-xs text-slate-500 truncate">https://www.google.com</div>
+      </div>
+      <div class="flex-1 flex flex-col items-center justify-center p-6 bg-slate-50 dark:bg-slate-900">
+        <h3 class="text-lg font-bold text-slate-700 dark:text-slate-300">Navegador Web Firefox</h3>
+        <p class="text-xs text-slate-400 mt-1">Conexión a Internet no disponible en esta simulación.</p>
+      </div>
+    </div>
+  </template>
+
+  <!-- Application JS Code -->
+  <script src="app.js"></script>
+</body>
+</html>
