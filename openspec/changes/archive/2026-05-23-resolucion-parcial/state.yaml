@@ -1,0 +1,28 @@
+name: resolucion-parcial
+status: archived
+current_phase: archive
+phases:
+  explore:
+    status: completed
+    path: openspec/changes/archive/2026-05-23-resolucion-parcial/exploration.md
+  proposal:
+    status: completed
+    path: openspec/changes/archive/2026-05-23-resolucion-parcial/proposal.md
+  spec:
+    status: completed
+    path: openspec/changes/archive/2026-05-23-resolucion-parcial/spec.md
+  design:
+    status: completed
+    path: openspec/changes/archive/2026-05-23-resolucion-parcial/design.md
+  tasks:
+    status: completed
+    path: openspec/changes/archive/2026-05-23-resolucion-parcial/tasks.md
+  apply:
+    status: completed
+    path: openspec/changes/archive/2026-05-23-resolucion-parcial/apply-progress.md
+  verify:
+    status: completed
+    path: openspec/changes/archive/2026-05-23-resolucion-parcial/verify-report.md
+  archive:
+    status: completed
+    path: openspec/changes/archive/2026-05-23-resolucion-parcial/archive-report.md

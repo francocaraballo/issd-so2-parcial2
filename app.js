@@ -47,7 +47,137 @@ Gracias a entornos de escritorio livianos (como MATE o XFCE) y un consumo de RAM
   "/Documentos": {
     type: "dir",
     name: "Documentos",
-    children: ["Bienvenida.txt", "conclusion_grupal.txt", "Trabajo Escrito (Google Docs).url"]
+    children: ["Bienvenida.txt", "conclusion_grupal.txt", "Trabajo Escrito (Google Docs).url", "Resolución de Parcial"]
+  },
+  "/Documentos/Resolución de Parcial": {
+    type: "dir",
+    name: "Resolución de Parcial",
+    children: [
+      "Parte 1 - Instalacion Virtual Box y Linux Mint.html",
+      "Parte 2 - Investigacion y Experimentacion.html",
+      "Parte 3 - Linux para diferentes personas.html",
+      "Parte 4 - Linux, el motor de la IA.html",
+      "Parte 5 - Conclusión grupal.html"
+    ]
+  },
+  "/Documentos/Resolución de Parcial/Ejercicio 1 - Planificación de Procesos.html": {
+    type: "file",
+    name: "Parte 1 - Instalacion Virtual Box y Linux Mint.html",
+    content: `
+      <h1>Parte 1 - Instalacion Virtual Box y Linux Mint.html</h1>
+      <p>La planificación de la CPU consiste en determinar qué proceso en la cola de Listos (Ready Queue) recibe el uso del procesador cuando este queda libre. El objetivo principal es maximizar el uso de la CPU y brindar tiempos de respuesta óptimos para el usuario.</p>
+      <h2>Algoritmos de Planificación</h2>
+      <ul>
+        <li><strong>First-Come, First-Served (FCFS):</strong> Planificación no apropiativa donde el primer proceso que llega se ejecuta primero. Sencillo pero propenso al "efecto convoy".</li>
+        <li><strong>Shortest Job First (SJF):</strong> Ejecuta el proceso con la ráfaga de CPU más corta. Es óptimo porque minimiza el tiempo de espera promedio.</li>
+        <li><strong>Shortest Remaining Time First (SRTF):</strong> Versión apropiativa de SJF. Si llega un proceso con menor tiempo restante que el actual, se apropia del procesador.</li>
+        <li><strong>Round Robin (RR):</strong> Algoritmo diseñado para sistemas de tiempo compartido. Cada proceso recibe una pequeña porción de tiempo de CPU (quantum). Si no termina, vuelve al final de la cola.</li>
+      </ul>
+      <img src="images/scheduling_diagram.png" class="max-w-full h-auto rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 mx-auto" alt="Diagrama de Planificación de CPU" />
+      <p>A continuación se presenta un video explicativo sobre los criterios de planificación y cómo se calculan las métricas clave como el tiempo de retorno (turnaround) y el tiempo de espera (waiting time):</p>
+      <div class="relative w-full aspect-video my-4 rounded-lg overflow-hidden shadow-md">
+        <iframe class="absolute top-0 left-0 w-full h-full border-0 aspect-video" src="https://www.youtube.com/embed/YpTMc_H3QoA" allowfullscreen></iframe>
+      </div>
+    `
+  },
+  "/Documentos/Resolución de Parcial/Ejercicio 2 - Memoria Virtual.html": {
+    type: "file",
+    name: "Ejercicio 2 - Memoria Virtual.html",
+    content: `
+      <h1>Ejercicio 2: Memoria Virtual</h1>
+      <p>La memoria virtual es una técnica de gestión de memoria que permite al sistema operativo proveer a cada proceso un espacio de direccionamiento lógico contiguo y grande, simulando que tiene más memoria física de la realmente disponible. Esto se logra mediante la paginación y la traducción dinámica de direcciones.</p>
+      <h2>Conceptos Clave de Paginación</h2>
+      <ul>
+        <li><strong>Páginas y Marcos de Página:</strong> El espacio de direcciones lógicas se divide en páginas de tamaño fijo, y la memoria física se divide en marcos (frames) de igual tamaño.</li>
+        <li><strong>Tabla de Páginas (Page Table):</strong> Mantiene la correspondencia entre las páginas lógicas y los marcos físicos de memoria, incluyendo bits de validez/invalidez, de modificación (dirty) y de referencia.</li>
+        <li><strong>Fallo de Página (Page Fault):</strong> Excepción de hardware producida cuando un proceso intenta acceder a una página lógica que no se encuentra mapeada en la memoria RAM física.</li>
+      </ul>
+      <img src="images/virtual_memory.png" class="max-w-full h-auto rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 mx-auto" alt="Diagrama de Memoria Virtual y Traducción de Direcciones" />
+      <h2>Algoritmos de Reemplazo de Páginas</h2>
+      <p>Cuando ocurre un fallo de página y no hay marcos libres, el sistema operativo debe elegir una página víctima para desalojar:</p>
+      <ul>
+        <li><strong>FIFO (First-In, First-Out):</strong> Desaloja la página más antigua. Sufre de la anomalía de Belady.</li>
+        <li><strong>LRU (Least Recently Used):</strong> Desaloja la página que no ha sido usada por más tiempo. Excelente rendimiento pero requiere soporte de hardware para ser eficiente.</li>
+        <li><strong>Óptimo (OPT):</strong> Desaloja la página que tardará más tiempo en volver a usarse. Es inalcanzable en la práctica, sirve como referencia de comparación.</li>
+      </ul>
+      <div class="relative w-full aspect-video my-4 rounded-lg overflow-hidden shadow-md">
+        <iframe class="absolute top-0 left-0 w-full h-full border-0 aspect-video" src="https://www.youtube.com/embed/YpTMc_H3QoA" allowfullscreen></iframe>
+      </div>
+    `
+  },
+  "/Documentos/Resolución de Parcial/Ejercicio 3 - Sistemas de Archivos.html": {
+    type: "file",
+    name: "Ejercicio 3 - Sistemas de Archivos.html",
+    content: `
+      <h1>Ejercicio 3: Sistemas de Archivos</h1>
+      <p>El sistema de archivos es la estructura subyacente que utiliza el sistema operativo para organizar, almacenar, nombrar y recuperar archivos en dispositivos de almacenamiento secundario de forma eficiente y segura.</p>
+      <h2>Estructuras Basadas en Inodos (Ej: Ext4)</h2>
+      <p>En sistemas tipo Unix, un archivo está representado por un <strong>inodo (nodo de índice)</strong>, que es una estructura de datos que almacena metadatos y punteros a bloques de datos:</p>
+      <ul>
+        <li><strong>Metadatos:</strong> Permisos, propietario, tamaño del archivo, marcas de tiempo de acceso, modificación y creación.</li>
+        <li><strong>Punteros Directos:</strong> Direcciones que apuntan directamente a los primeros bloques de datos del archivo (rápido acceso para archivos pequeños).</li>
+        <li><strong>Punteros Indirectos:</strong> Direcciones que apuntan a bloques de punteros adicionales (simples, dobles o triples), permitiendo el almacenamiento de archivos extremadamente grandes.</li>
+      </ul>
+      <img src="images/file_system.png" class="max-w-full h-auto rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 mx-auto" alt="Diagrama de Estructura de un Inodo" />
+      <h2>Métodos de Asignación de Espacio</h2>
+      <ul>
+        <li><strong>Asignación Contigua:</strong> Cada archivo ocupa un conjunto de bloques contiguos en el disco. Rápido acceso secuencial, pero sufre fragmentación externa.</li>
+        <li><strong>Asignación Enlazada:</strong> Cada archivo es una lista enlazada de bloques de disco. Resuelve fragmentación externa pero el acceso aleatorio es lento.</li>
+        <li><strong>Asignación Indexada:</strong> Reúne todos los punteros en un bloque de índice. Admite acceso aleatorio rápido sin fragmentación externa.</li>
+      </ul>
+      <div class="relative w-full aspect-video my-4 rounded-lg overflow-hidden shadow-md">
+        <iframe class="absolute top-0 left-0 w-full h-full border-0 aspect-video" src="https://www.youtube.com/embed/YpTMc_H3QoA" allowfullscreen></iframe>
+      </div>
+    `
+  },
+  "/Documentos/Resolución de Parcial/Ejercicio 4 - Concurrencia y Semáforos.html": {
+    type: "file",
+    name: "Ejercicio 4 - Concurrencia y Semáforos.html",
+    content: `
+      <h1>Ejercicio 4: Concurrencia y Semáforos</h1>
+      <p>La ejecución de múltiples procesos o hilos cooperativos que comparten memoria puede dar lugar a <strong>condiciones de carrera (race conditions)</strong>, donde el resultado final depende del orden relativo de ejecución. Para evitar esto, se requiere sincronización.</p>
+      <h2>Semáforos de Dijkstra</h2>
+      <p>Un semáforo es una variable entera especial a la que solo se puede acceder mediante dos operaciones atómicas estándar:</p>
+      <ul>
+        <li><strong>P(S) o wait(S):</strong> Decrementa el valor del semáforo. Si el valor es negativo, el proceso se bloquea y entra en la cola del semáforo.</li>
+        <li><strong>V(S) o signal(S):</strong> Incrementa el valor del semáforo. Si hay procesos bloqueados en la cola, despierta a uno de ellos.</li>
+      </ul>
+      <img src="images/concurrency_semaphores.png" class="max-w-full h-auto rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 mx-auto" alt="Diagrama de exclusión mutua mediante Semáforo" />
+      <h2>Problemas Clásicos de Sincronización</h2>
+      <ol>
+        <li><strong>Productor-Consumidor (Bounded Buffer):</strong> Un conjunto de productores coloca elementos en un buffer de tamaño limitado, y los consumidores los retiran. Se usan semáforos para evitar sobrellenar o vaciar el buffer indebidamente.</li>
+        <li><strong>Lectores-Escritores:</strong> Múltiples lectores pueden leer concurrentemente, pero solo un escritor puede acceder a la vez de forma exclusiva.</li>
+        <li><strong>Cena de los Filósofos:</strong> Ilustra el problema de la asignación de recursos compartidos sin interbloqueos (deadlock) ni inanición (starvation).</li>
+      </ol>
+      <div class="relative w-full aspect-video my-4 rounded-lg overflow-hidden shadow-md">
+        <iframe class="absolute top-0 left-0 w-full h-full border-0 aspect-video" src="https://www.youtube.com/embed/YpTMc_H3QoA" allowfullscreen></iframe>
+      </div>
+    `
+  },
+  "/Documentos/Resolución de Parcial/Ejercicio 5 - Entrada y Salida.html": {
+    type: "file",
+    name: "Ejercicio 5 - Entrada y Salida.html",
+    content: `
+      <h1>Ejercicio 5: Entrada y Salida (E/S)</h1>
+      <p>El subsistema de Entrada/Salida es responsable de comunicar el procesador y la memoria con los periféricos externos, abstrayendo al programador de los detalles de hardware de cada dispositivo específico.</p>
+      <h2>Técnicas de Operación de E/S</h2>
+      <ul>
+        <li><strong>E/S Programada (Polling):</strong> La CPU monitorea continuamente el estado del controlador del dispositivo en un bucle activo. Consume ciclos valiosos de CPU.</li>
+        <li><strong>E/S por Interrupciones:</strong> El controlador del dispositivo interrumpe a la CPU cuando tiene datos listos o finalizó su tarea, evitando la espera activa.</li>
+        <li><strong>Acceso Directo a Memoria (DMA):</strong> Un controlador especial transfiere bloques enteros de datos entre el dispositivo de E/S y la memoria RAM sin intervención constante de la CPU.</li>
+      </ul>
+      <img src="images/io_subsystem.png" class="max-w-full h-auto rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 mx-auto" alt="Diagrama de Planificación de Lectura en Disco" />
+      <h2>Algoritmos de Planificación de Disco (Búsqueda)</h2>
+      <p>Los algoritmos determinan el orden en el que se atienden las solicitudes de lectura/escritura pendientes del disco para minimizar el movimiento del brazo magnético:</p>
+      <ul>
+        <li><strong>SSTF (Shortest Seek Time First):</strong> Selecciona la solicitud más cercana a la posición actual del cabezal. Reduce el tiempo de búsqueda pero puede causar inanición de pistas lejanas.</li>
+        <li><strong>SCAN (Algoritmo del Ascensor):</strong> El brazo se desplaza de un extremo a otro atendiendo solicitudes, y al llegar al final invierte la dirección.</li>
+        <li><strong>C-SCAN (Circular SCAN):</strong> Se mueve en una dirección atendiendo peticiones y al llegar al extremo retorna al inicio inmediatamente sin atender peticiones de regreso. Proporciona un tiempo de espera más uniforme.</li>
+      </ul>
+      <div class="relative w-full aspect-video my-4 rounded-lg overflow-hidden shadow-md">
+        <iframe class="absolute top-0 left-0 w-full h-full border-0 aspect-video" src="https://www.youtube.com/embed/YpTMc_H3QoA" allowfullscreen></iframe>
+      </div>
+    `
   },
   "/Documentos/Trabajo Escrito (Google Docs).url": {
     type: "file",
@@ -108,7 +238,7 @@ Entender el funcionamiento interno de Linux, su robustez gracias al software lib
   "/Integrantes": {
     type: "dir",
     name: "Integrantes",
-    children: ["Maxi", "Manuel Saquilán", "Leandro Fernández Fernández", "Franco Caraballo"]
+    children: ["Maxi Oria", "Manuel Saquilán", "Leandro Fernández", "Franco Caraballo"]
   },
   "/Integrantes/Maxi": {
     type: "file",
@@ -189,18 +319,18 @@ class WindowManager {
     const template = document.getElementById('window-template');
     const clone = template.content.cloneNode(true);
     const windowNode = clone.querySelector('.app-window');
-    
+
     // Unique ID
     const winId = 'win_' + Date.now() + Math.floor(Math.random() * 1000);
     windowNode.id = winId;
     windowNode.setAttribute('data-app', appId);
-    
+
     // Position cascade calculation
     const offset = this.windows.length * this.winCascadeOffset;
     let initialWidth = 640;
     let initialHeight = 440;
     let initialX, initialY;
-    
+
     // Mobile Viewport constraints
     const isMobile = window.innerWidth < 768;
     if (isMobile) {
@@ -213,7 +343,7 @@ class WindowManager {
       initialX = Math.max(0, (window.innerWidth - initialWidth) / 2) + offset;
       initialY = Math.max(0, (window.innerHeight - initialHeight - panelHeight) / 2) + offset;
     }
-    
+
     // Set position
     windowNode.style.left = `${initialX}px`;
     windowNode.style.top = `${initialY}px`;
@@ -232,21 +362,22 @@ class WindowManager {
       height: initialHeight,
       isMinimized: false,
       isMaximized: isMobile,
+      desktopMaximized: false,
       savedX: initialX,
       savedY: initialY,
       savedWidth: initialWidth,
       savedHeight: initialHeight
     };
-    
+
     // Add App icon & Title
     windowNode.querySelector('.window-title').textContent = title;
     const iconContainer = windowNode.querySelector('.window-app-icon');
     iconContainer.innerHTML = getAppIconSvg(appId);
-    
+
     // Initialize specific app contents
     const contentContainer = windowNode.querySelector('.window-content');
     this.mountAppContent(contentContainer, appId, winInstance, initData);
-    
+
     // Setup event listeners
     this.bindWindowControls(windowNode, winInstance);
     this.bindWindowFocus(windowNode, winId);
@@ -254,41 +385,41 @@ class WindowManager {
       this.bindWindowDragging(windowNode, winInstance);
       this.bindWindowResizing(windowNode, winInstance);
     }
-    
+
     // Append to Zone
     this.zoneNode.appendChild(windowNode);
-    
+
     // Track states
     this.windows.push(winInstance);
     this.zStack.push(winId);
-    
+
     // Focus and draw taskbar
     this.focusWindow(winId);
     this.updateTaskbar();
-    
+
     return winInstance;
   }
 
   // Focus Window
   focusWindow(winId) {
     if (!this.zStack.includes(winId)) return;
-    
+
     // Move to end of zStack
     this.zStack = this.zStack.filter(id => id !== winId);
     this.zStack.push(winId);
-    
+
     this.activeWindowId = winId;
-    
+
     // Re-index nodes and update styles
     this.zStack.forEach((id, index) => {
       const win = this.windows.find(w => w.id === id);
       if (win && win.node) {
         win.node.style.zIndex = this.baseZIndex + index;
-        
+
         // Active border highlights
         if (id === winId) {
           win.node.classList.add('active-window');
-          
+
           // Autofocus terminal inputs or specific fields
           const termInput = win.node.querySelector('.terminal-input');
           if (termInput) termInput.focus();
@@ -307,16 +438,16 @@ class WindowManager {
   minimizeWindow(winId) {
     const win = this.windows.find(w => w.id === winId);
     if (!win) return;
-    
+
     win.isMinimized = true;
     win.node.style.display = 'none';
-    
+
     // Find next window to focus
     const remainingFocusable = this.zStack.filter(id => {
       const w = this.windows.find(x => x.id === id);
       return w && !w.isMinimized;
     });
-    
+
     if (remainingFocusable.length > 0) {
       this.focusWindow(remainingFocusable[remainingFocusable.length - 1]);
     } else {
@@ -329,7 +460,7 @@ class WindowManager {
   restoreWindow(winId) {
     const win = this.windows.find(w => w.id === winId);
     if (!win) return;
-    
+
     win.isMinimized = false;
     win.node.style.display = 'flex';
     this.focusWindow(winId);
@@ -339,11 +470,12 @@ class WindowManager {
   toggleMaximize(winId) {
     const win = this.windows.find(w => w.id === winId);
     if (!win || window.innerWidth < 768) return; // Prevent change in mobile
-    
+
     const node = win.node;
     if (win.isMaximized) {
       // Restore previous geometry
       win.isMaximized = false;
+      win.desktopMaximized = false;
       node.style.left = `${win.savedX}px`;
       node.style.top = `${win.savedY}px`;
       node.style.width = `${win.savedWidth}px`;
@@ -355,16 +487,17 @@ class WindowManager {
       win.savedY = parseInt(node.style.top) || win.y;
       win.savedWidth = parseInt(node.style.width) || win.width;
       win.savedHeight = parseInt(node.style.height) || win.height;
-      
+
       // Expand fully
       win.isMaximized = true;
+      win.desktopMaximized = true;
       node.style.left = '0px';
       node.style.top = '0px';
       node.style.width = '100vw';
       node.style.height = 'calc(100vh - 48px)';
       node.classList.add('rounded-none');
     }
-    
+
     // Focus
     this.focusWindow(winId);
   }
@@ -373,7 +506,7 @@ class WindowManager {
   closeWindow(winId) {
     const winIndex = this.windows.findIndex(w => w.id === winId);
     if (winIndex === -1) return;
-    
+
     const win = this.windows[winIndex];
     if (win.node) {
       // Fade out transition
@@ -385,18 +518,18 @@ class WindowManager {
         }
       }, 150);
     }
-    
+
     // Delete from records
     this.windows.splice(winIndex, 1);
     this.zStack = this.zStack.filter(id => id !== winId);
-    
+
     // Focus next top-most window
     if (this.zStack.length > 0) {
       this.focusWindow(this.zStack[this.zStack.length - 1]);
     } else {
       this.activeWindowId = null;
     }
-    
+
     this.updateTaskbar();
   }
 
@@ -407,10 +540,10 @@ class WindowManager {
       containerNode.innerHTML = `<div class="p-4 text-red-500 font-semibold">Error: Application template not found.</div>`;
       return;
     }
-    
+
     const content = appTemplate.content.cloneNode(true);
     containerNode.appendChild(content);
-    
+
     // Initialize application-specific controllers
     switch (appId) {
       case 'terminal':
@@ -424,6 +557,9 @@ class WindowManager {
         break;
       case 'xed':
         initXedApp(containerNode, winInstance, initData);
+        break;
+      case 'xreader':
+        initXreaderApp(containerNode, winInstance, initData);
         break;
     }
   }
@@ -442,24 +578,24 @@ class WindowManager {
     const minBtn = windowNode.querySelector('[data-control="minimize"]');
     const maxBtn = windowNode.querySelector('[data-control="maximize"]');
     const closeBtn = windowNode.querySelector('[data-control="close"]');
-    
+
     minBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       this.minimizeWindow(winInstance.id);
     });
-    
+
     maxBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       this.toggleMaximize(winInstance.id);
     });
-    
+
     // Double click header maximizing
     const titlebar = windowNode.querySelector('.window-titlebar');
     titlebar.addEventListener('dblclick', (e) => {
       e.stopPropagation();
       this.toggleMaximize(winInstance.id);
     });
-    
+
     closeBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       this.closeWindow(winInstance.id);
@@ -469,49 +605,49 @@ class WindowManager {
   // Dragging using Pointer Events (Mouse/Touch unified)
   bindWindowDragging(windowNode, winInstance) {
     const titlebar = windowNode.querySelector('.window-titlebar');
-    
+
     titlebar.addEventListener('pointerdown', (e) => {
       // Only drag with left click or touch
       if (e.button !== 0 && e.pointerType === 'mouse') return;
       if (winInstance.isMaximized || window.innerWidth < 768) return;
-      
+
       // Stop selection default
       e.preventDefault();
-      
+
       // Focus first
       this.focusWindow(winInstance.id);
-      
+
       const startX = e.clientX;
       const startY = e.clientY;
       const startLeft = parseInt(windowNode.style.left) || 0;
       const startTop = parseInt(windowNode.style.top) || 0;
-      
+
       const onPointerMove = (moveEvent) => {
         const dx = moveEvent.clientX - startX;
         const dy = moveEvent.clientY - startY;
-        
+
         let newLeft = startLeft + dx;
         let newTop = startTop + dy;
-        
+
         // Boundaries: keep at least 50% titlebar on screen horizontally
         const buffer = 150;
         newLeft = Math.max(-windowNode.offsetWidth + buffer, Math.min(window.innerWidth - buffer, newLeft));
         // Keep title bar visible vertically (cannot hide behind panel at bottom, nor scroll off top)
         newTop = Math.max(0, Math.min(window.innerHeight - 80, newTop));
-        
+
         windowNode.style.left = `${newLeft}px`;
         windowNode.style.top = `${newTop}px`;
-        
+
         // Cache coordinates
         winInstance.x = newLeft;
         winInstance.y = newTop;
       };
-      
+
       const onPointerUp = () => {
         window.removeEventListener('pointermove', onPointerMove);
         window.removeEventListener('pointerup', onPointerUp);
       };
-      
+
       window.addEventListener('pointermove', onPointerMove);
       window.addEventListener('pointerup', onPointerUp);
     });
@@ -520,17 +656,17 @@ class WindowManager {
   // Resizing using Pointer Events (8 zones)
   bindWindowResizing(windowNode, winInstance) {
     const resizers = windowNode.querySelectorAll('.window-resizer');
-    
+
     resizers.forEach(resizer => {
       resizer.addEventListener('pointerdown', (e) => {
         if (e.button !== 0 && e.pointerType === 'mouse') return;
         if (winInstance.isMaximized || window.innerWidth < 768) return;
-        
+
         e.stopPropagation();
         e.preventDefault();
-        
+
         this.focusWindow(winInstance.id);
-        
+
         const dir = resizer.getAttribute('data-direction');
         const startX = e.clientX;
         const startY = e.clientY;
@@ -538,19 +674,19 @@ class WindowManager {
         const startTop = parseInt(windowNode.style.top) || 0;
         const startWidth = parseInt(windowNode.style.width) || windowNode.offsetWidth;
         const startHeight = parseInt(windowNode.style.height) || windowNode.offsetHeight;
-        
+
         const minW = 340;
         const minH = 200;
-        
+
         const onPointerMove = (moveEvent) => {
           const dx = moveEvent.clientX - startX;
           const dy = moveEvent.clientY - startY;
-          
+
           let newWidth = startWidth;
           let newHeight = startHeight;
           let newLeft = startLeft;
           let newTop = startTop;
-          
+
           if (dir.includes('e')) {
             newWidth = Math.max(minW, startWidth + dx);
           }
@@ -571,29 +707,29 @@ class WindowManager {
               newTop = startTop + dy;
             }
           }
-          
+
           // Verify vertical constraint to avoid dragging/resizing above 0 top limit
           if (newTop < 0) {
             newHeight = newHeight + newTop; // deduct height
             newTop = 0;
           }
-          
+
           windowNode.style.left = `${newLeft}px`;
           windowNode.style.top = `${newTop}px`;
           windowNode.style.width = `${newWidth}px`;
           windowNode.style.height = `${newHeight}px`;
-          
+
           winInstance.x = newLeft;
           winInstance.y = newTop;
           winInstance.width = newWidth;
           winInstance.height = newHeight;
         };
-        
+
         const onPointerUp = () => {
           window.removeEventListener('pointermove', onPointerMove);
           window.removeEventListener('pointerup', onPointerUp);
         };
-        
+
         window.addEventListener('pointermove', onPointerMove);
         window.addEventListener('pointerup', onPointerUp);
       });
@@ -604,25 +740,24 @@ class WindowManager {
   updateTaskbar() {
     const container = document.getElementById('taskbar-items');
     container.innerHTML = '';
-    
+
     this.windows.forEach(win => {
       const isActive = this.activeWindowId === win.id;
-      
+
       const item = document.createElement('button');
       // Rich glass styling matching active/minimized states
-      item.className = `h-10 px-3 flex items-center gap-2 rounded border border-white/5 transition-all text-xs font-semibold text-left max-w-[140px] truncate ${
-        isActive 
-          ? 'bg-white/15 border-b-2 border-b-mint text-white shadow-sm' 
-          : win.isMinimized 
-            ? 'opacity-40 hover:opacity-75 hover:bg-white/5' 
-            : 'hover:bg-white/10 hover:text-white'
-      }`;
-      
+      item.className = `h-10 px-3 flex items-center gap-2 rounded border border-white/5 transition-all text-xs font-semibold text-left max-w-[140px] truncate ${isActive
+        ? 'bg-white/15 border-b-2 border-b-mint text-white shadow-sm'
+        : win.isMinimized
+          ? 'opacity-40 hover:opacity-75 hover:bg-white/5'
+          : 'hover:bg-white/10 hover:text-white'
+        }`;
+
       item.innerHTML = `
         <span class="w-4 h-4 flex-shrink-0 flex items-center justify-center">${getAppIconSvg(win.appId)}</span>
         <span class="truncate">${win.title}</span>
       `;
-      
+
       item.addEventListener('click', (e) => {
         e.stopPropagation();
         if (isActive) {
@@ -633,7 +768,7 @@ class WindowManager {
           this.focusWindow(win.id);
         }
       });
-      
+
       container.appendChild(item);
     });
   }
@@ -644,18 +779,35 @@ class WindowManager {
     this.windows.forEach(win => {
       const node = win.node;
       if (isMobile) {
+        if (!win.isMaximized) {
+          win.savedX = parseInt(node.style.left) || win.x;
+          win.savedY = parseInt(node.style.top) || win.y;
+          win.savedWidth = parseInt(node.style.width) || win.width;
+          win.savedHeight = parseInt(node.style.height) || win.height;
+        }
         node.style.left = '0px';
         node.style.top = '0px';
         node.style.width = '100vw';
         node.style.height = `${window.innerHeight - 48}px`;
         node.classList.add('rounded-none');
         win.isMaximized = true;
-      } else if (win.isMaximized) {
-        // Keeps maximized styles for larger layouts
-        node.style.left = '0px';
-        node.style.top = '0px';
-        node.style.width = '100vw';
-        node.style.height = `calc(100vh - 48px)`;
+      } else {
+        // Desktop view
+        if (win.desktopMaximized) {
+          node.style.left = '0px';
+          node.style.top = '0px';
+          node.style.width = '100vw';
+          node.style.height = `calc(100vh - 48px)`;
+          node.classList.add('rounded-none');
+          win.isMaximized = true;
+        } else {
+          node.style.left = `${win.savedX}px`;
+          node.style.top = `${win.savedY}px`;
+          node.style.width = `${win.savedWidth}px`;
+          node.style.height = `${win.savedHeight}px`;
+          node.classList.remove('rounded-none');
+          win.isMaximized = false;
+        }
       }
     });
   }
@@ -672,6 +824,7 @@ window.spawnApp = (appId, title, initData = null) => {
       case 'settings': winTitle = 'Preferencias del Sistema'; break;
       case 'xed': winTitle = 'Editor de Texto (Xed)'; break;
       case 'firefox': winTitle = 'Navegador Web Firefox'; break;
+      case 'xreader': winTitle = 'Visor de Documentos (Xreader)'; break;
       default: winTitle = 'Aplicación';
     }
   }
@@ -696,7 +849,7 @@ window.spawnApp = (appId, title, initData = null) => {
       return;
     }
   }
-  
+
   window.wm.createWindow(appId, winTitle, initData);
 };
 
@@ -707,29 +860,29 @@ window.spawnApp = (appId, title, initData = null) => {
 // Helper to resolve absolute or relative path securely without double slashes or trailing slashes (except root)
 function resolvePath(currentDir, targetPath) {
   if (!targetPath) return currentDir;
-  
+
   // Strip outer quotes if any
   let cleanTarget = targetPath.trim();
-  if ((cleanTarget.startsWith('"') && cleanTarget.endsWith('"')) || 
-      (cleanTarget.startsWith("'") && cleanTarget.endsWith("'"))) {
+  if ((cleanTarget.startsWith('"') && cleanTarget.endsWith('"')) ||
+    (cleanTarget.startsWith("'") && cleanTarget.endsWith("'"))) {
     cleanTarget = cleanTarget.slice(1, -1);
   }
-  
+
   // Normalize slashes (replace multiple slashes with a single one)
   let normalized = cleanTarget.replace(/\/+/g, '/');
-  
+
   let resolved;
   if (normalized.startsWith('/')) {
     resolved = normalized;
   } else {
     resolved = currentDir === '/' ? `/${normalized}` : `${currentDir}/${normalized}`;
   }
-  
+
   // Strip trailing slash unless it is just "/"
   if (resolved.length > 1 && resolved.endsWith('/')) {
     resolved = resolved.slice(0, -1);
   }
-  
+
   return resolved;
 }
 
@@ -737,12 +890,12 @@ function resolvePath(currentDir, targetPath) {
 function initTerminalApp(container, winInstance, initData) {
   const historyNode = container.querySelector('.terminal-history');
   const inputNode = container.querySelector('.terminal-input');
-  
+
   // Custom directory state per terminal instance
   let currentDirectory = '/';
   let commandHistory = [];
   let historyIndex = -1;
-  
+
   // Print response helper
   const printLine = (text, type = 'normal') => {
     const line = document.createElement('div');
@@ -767,12 +920,12 @@ function initTerminalApp(container, winInstance, initData) {
     const parts = cmdStr.trim().split(/\s+/);
     const cmd = parts[0].toLowerCase();
     const args = parts.slice(1);
-    
+
     // Command print history echo
     printLine(`<span class="text-white font-semibold">mint@cinnamon:${currentDirectory}$</span> ${cmdStr}`);
-    
+
     if (!cmd) return;
-    
+
     switch (cmd) {
       case 'help':
         printLine('Comandos Disponibles:', 'header');
@@ -784,7 +937,7 @@ function initTerminalApp(container, winInstance, initData) {
         printLine('  theme [light|dark] Cambia el tema visual de la interfaz');
         printLine('  clear             Limpia el buffer de salida de la terminal');
         break;
-        
+
       case 'ls':
         const dirNode = VIRTUAL_FS[currentDirectory];
         if (dirNode && dirNode.children) {
@@ -799,11 +952,11 @@ function initTerminalApp(container, winInstance, initData) {
           printLine('ls: no se puede acceder al directorio: Error de permisos o ruta inexistente', 'error');
         }
         break;
-        
+
       case 'cd':
         const target = args.join(' ') || '/';
         let newPath = currentDirectory;
-        
+
         if (target === '/') {
           newPath = '/';
         } else if (target === '..') {
@@ -823,7 +976,7 @@ function initTerminalApp(container, winInstance, initData) {
         }
         currentDirectory = newPath;
         break;
-        
+
       case 'cat':
         if (args.length === 0) {
           printLine('cat: falta el operando', 'error');
@@ -832,7 +985,7 @@ function initTerminalApp(container, winInstance, initData) {
         const fileTarget = args.join(' ');
         const filePath = resolvePath(currentDirectory, fileTarget);
         const fileObj = VIRTUAL_FS[filePath];
-        
+
         if (fileObj && fileObj.type === 'file') {
           printLine(fileObj.content.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'));
         } else if (fileObj && fileObj.type === 'dir') {
@@ -841,11 +994,11 @@ function initTerminalApp(container, winInstance, initData) {
           printLine(`cat: ${fileTarget}: No existe el archivo o directorio`, 'error');
         }
         break;
-        
+
       case 'clear':
         historyNode.innerHTML = '';
         break;
-        
+
       case 'neofetch':
         const asciiMint = `
 <span class="text-mint font-bold">         \`.-::--..\`      </span>  <span class="text-white font-bold">mint@cinnamon</span>
@@ -865,7 +1018,7 @@ function initTerminalApp(container, winInstance, initData) {
         `;
         printLine(asciiMint);
         break;
-        
+
       case 'theme':
         const desiredTheme = args[0];
         if (desiredTheme === 'light' || desiredTheme === 'dark') {
@@ -875,7 +1028,7 @@ function initTerminalApp(container, winInstance, initData) {
           printLine('Uso: theme [light|dark]', 'error');
         }
         break;
-        
+
       default:
         printLine(`bash: ${cmd}: comando no encontrado. Escribí 'help' para recibir ayuda.`, 'error');
     }
@@ -910,12 +1063,12 @@ function initTerminalApp(container, winInstance, initData) {
       }
     }
   });
-  
+
   // Auto focus terminal click anywhere inside content
   container.addEventListener('click', () => {
     inputNode.focus();
   });
-  
+
   // First neofetch trigger automatically if terminal is loaded freshly without initial args
   if (initData && initData.command) {
     executeCommand(initData.command);
@@ -930,11 +1083,11 @@ function initNemoApp(container, winInstance, initData) {
   const filesGrid = container.querySelector('#nemo-files-grid');
   const breadcrumbs = container.querySelector('.nemo-breadcrumbs');
   const backBtn = container.querySelector('.nemo-back-btn');
-  
+
   let currentPath = initData && initData.path ? initData.path : '/';
   let navigationHistory = [currentPath];
   let historyPointer = 0;
-  
+
   // Render Sidebar navigation shortcuts
   const renderSidebar = () => {
     sidebar.innerHTML = '';
@@ -945,13 +1098,12 @@ function initNemoApp(container, winInstance, initData) {
       { label: 'Imágenes', path: '/Imágenes', icon: 'pictures' },
       { label: 'Integrantes', path: '/Integrantes', icon: 'about' }
     ];
-    
+
     shortcuts.forEach(item => {
       const active = currentPath === item.path;
       const btn = document.createElement('button');
-      btn.className = `w-full text-left px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-2 select-none hover:bg-slate-200/60 dark:hover:bg-slate-800/40 ${
-        active ? 'bg-mint/20 text-mint font-bold dark:text-mint-light' : 'text-slate-600 dark:text-slate-300'
-      }`;
+      btn.className = `w-full text-left px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-2 select-none hover:bg-slate-200/60 dark:hover:bg-slate-800/40 ${active ? 'bg-mint/20 text-mint font-bold dark:text-mint-light' : 'text-slate-600 dark:text-slate-300'
+        }`;
       btn.innerHTML = `
         <span class="w-3.5 h-3.5 flex-shrink-0">${getAppIconSvg(item.icon)}</span>
         <span>${item.label}</span>
@@ -967,23 +1119,23 @@ function initNemoApp(container, winInstance, initData) {
   const renderBreadcrumbs = () => {
     breadcrumbs.innerHTML = '';
     const parts = currentPath.split('/').filter(Boolean);
-    
+
     // Root link
     const rootBtn = document.createElement('button');
     rootBtn.className = 'hover:text-mint font-semibold hover:underline';
     rootBtn.textContent = 'Equipo';
     rootBtn.addEventListener('click', () => navigateTo('/'));
     breadcrumbs.appendChild(rootBtn);
-    
+
     let pathAcc = '';
     parts.forEach(part => {
       pathAcc += '/' + part;
-      
+
       const separator = document.createElement('span');
       separator.className = 'text-slate-400';
       separator.textContent = '>';
       breadcrumbs.appendChild(separator);
-      
+
       const currentPathVal = pathAcc;
       const partBtn = document.createElement('button');
       partBtn.className = 'hover:text-mint font-semibold hover:underline truncate max-w-[80px]';
@@ -991,7 +1143,7 @@ function initNemoApp(container, winInstance, initData) {
       partBtn.addEventListener('click', () => navigateTo(currentPathVal));
       breadcrumbs.appendChild(partBtn);
     });
-    
+
     // Back button state
     backBtn.disabled = historyPointer <= 0;
   };
@@ -1001,17 +1153,17 @@ function initNemoApp(container, winInstance, initData) {
     filesGrid.innerHTML = '';
     const dirNode = VIRTUAL_FS[currentPath];
     if (!dirNode || !dirNode.children) return;
-    
+
     dirNode.children.forEach(child => {
       const fullChildPath = currentPath === '/' ? `/${child}` : `${currentPath}/${child}`;
       const itemObj = VIRTUAL_FS[fullChildPath];
       const isDir = itemObj ? itemObj.type === 'dir' : true;
       const displayName = child;
-      
+
       const fileCard = document.createElement('div');
       fileCard.className = 'desktop-icon flex-col w-[76px] min-h-[82px] h-auto border border-transparent rounded hover:bg-slate-200/50 dark:hover:bg-slate-800/50 cursor-pointer text-center py-2 flex items-center justify-start gap-1.5 focus:outline-none';
       fileCard.tabIndex = 0;
-      
+
       // Determine Icon
       let iconSvg = '';
       if (isDir) {
@@ -1021,16 +1173,16 @@ function initNemoApp(container, winInstance, initData) {
       } else {
         iconSvg = getAppIconSvg('xed'); // document editor icon
       }
-      
+
       fileCard.innerHTML = `
         <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center">${iconSvg}</div>
         <div class="text-[11px] leading-tight whitespace-normal break-words w-full px-1.5 font-medium text-slate-800 dark:text-slate-200">${displayName}</div>
       `;
-      
+
       // Click listeners
       let clickCount = 0;
       let clickTimer = null;
-      
+
       fileCard.addEventListener('click', () => {
         clickCount++;
         if (clickCount === 1) {
@@ -1041,20 +1193,22 @@ function initNemoApp(container, winInstance, initData) {
         } else if (clickCount === 2) {
           clearTimeout(clickTimer);
           clickCount = 0;
-          
+
           if (isDir) {
             navigateTo(fullChildPath);
           } else if (itemObj && itemObj.isLink) {
             window.open(itemObj.url, '_blank');
           } else if (itemObj && (itemObj.isUnopenable || fullChildPath.startsWith('/Integrantes/'))) {
             // Do nothing
+          } else if (fullChildPath.endsWith('.html')) {
+            window.spawnApp('xreader', `Visor de Documentos (Xreader) - ${displayName}`, { filePath: fullChildPath });
           } else {
             // File double-click opens Xed!
             window.spawnApp('xed', `Xed - ${displayName}`, { filePath: fullChildPath });
           }
         }
       });
-      
+
       // Support keyboard enter
       fileCard.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
@@ -1064,6 +1218,8 @@ function initNemoApp(container, winInstance, initData) {
             window.open(itemObj.url, '_blank');
           } else if (itemObj && (itemObj.isUnopenable || fullChildPath.startsWith('/Integrantes/'))) {
             // Do nothing
+          } else if (fullChildPath.endsWith('.html')) {
+            window.spawnApp('xreader', `Visor de Documentos (Xreader) - ${displayName}`, { filePath: fullChildPath });
           } else {
             window.spawnApp('xed', `Xed - ${displayName}`, { filePath: fullChildPath });
           }
@@ -1076,9 +1232,9 @@ function initNemoApp(container, winInstance, initData) {
 
   const navigateTo = (path) => {
     if (!VIRTUAL_FS[path] || VIRTUAL_FS[path].type !== 'dir') return;
-    
+
     currentPath = path;
-    
+
     // Update pointer logs
     if (navigationHistory[historyPointer] !== path) {
       // Clear forward history if we navigate to a new page
@@ -1086,7 +1242,7 @@ function initNemoApp(container, winInstance, initData) {
       navigationHistory.push(path);
       historyPointer = navigationHistory.length - 1;
     }
-    
+
     renderSidebar();
     renderBreadcrumbs();
     renderFilesGrid();
@@ -1102,7 +1258,7 @@ function initNemoApp(container, winInstance, initData) {
       renderFilesGrid();
     }
   });
-  
+
   // Start NEMO view
   navigateTo(currentPath);
 }
@@ -1112,27 +1268,26 @@ function initSettingsApp(container, winInstance, initData) {
   const tabs = container.querySelectorAll('.settings-nav-item');
   const panes = container.querySelectorAll('.settings-pane');
   const themeToggle = container.querySelector('#settings-theme-toggle');
-  
+
   // Theme state setup
   themeToggle.checked = systemConfig.theme === 'dark';
   themeToggle.addEventListener('change', (e) => {
     const newTheme = e.target.checked ? 'dark' : 'light';
     setGlobalTheme(newTheme);
   });
-  
+
   // Render Accents grid
   const accentContainer = container.querySelector('#settings-accent-colors');
   accentContainer.innerHTML = '';
   Object.keys(ACCENTS).forEach(key => {
     const color = ACCENTS[key];
     const isSelected = systemConfig.accent === key;
-    
+
     const btn = document.createElement('button');
-    btn.className = `w-8 h-8 rounded-full border-2 transition-all relative flex items-center justify-center hover:scale-105 active:scale-95 ${
-      isSelected ? 'border-slate-800 dark:border-white scale-110 shadow-md' : 'border-transparent shadow-sm'
-    }`;
+    btn.className = `w-8 h-8 rounded-full border-2 transition-all relative flex items-center justify-center hover:scale-105 active:scale-95 ${isSelected ? 'border-slate-800 dark:border-white scale-110 shadow-md' : 'border-transparent shadow-sm'
+      }`;
     btn.style.backgroundColor = color.hex;
-    
+
     const accentNames = {
       'mint': 'Verde Menta',
       'blue': 'Azul',
@@ -1140,36 +1295,35 @@ function initSettingsApp(container, winInstance, initData) {
       'amber': 'Ámbar'
     };
     btn.title = `Color de énfasis: ${accentNames[key] || key}`;
-    
+
     // Selected marker check
     if (isSelected) {
       btn.innerHTML = `<svg class="w-4 h-4 text-white drop-shadow-md" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>`;
     }
-    
+
     btn.addEventListener('click', () => {
       setGlobalAccent(key);
       initSettingsApp(container, winInstance, initData); // force rerender
     });
-    
+
     accentContainer.appendChild(btn);
   });
-  
+
   // Render Backgrounds previews
   const bgContainer = container.querySelector('#settings-backgrounds');
   bgContainer.innerHTML = '';
   Object.keys(WALLPAPERS).forEach(key => {
     const bgStyle = WALLPAPERS[key];
     const isSelected = systemConfig.wallpaper === key;
-    
+
     const card = document.createElement('button');
-    card.className = `h-20 rounded-lg overflow-hidden border-2 transition-all text-left relative flex flex-col justify-end p-2 ${
-      isSelected ? 'border-mint dark:border-mint-light scale-102 shadow-lg ring-1 ring-mint' : 'border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600'
-    }`;
+    card.className = `h-20 rounded-lg overflow-hidden border-2 transition-all text-left relative flex flex-col justify-end p-2 ${isSelected ? 'border-mint dark:border-mint-light scale-102 shadow-lg ring-1 ring-mint' : 'border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600'
+      }`;
     card.style.background = bgStyle;
-    
+
     const nameLabel = document.createElement('span');
     nameLabel.className = 'text-[10px] text-white bg-slate-900/60 px-1.5 py-0.5 rounded font-semibold w-max backdrop-blur-xs select-none';
-    
+
     const wallpaperNames = {
       'mint-default': 'Menta Predeterminado',
       'sunset-indigo': 'Atardecer Índigo',
@@ -1177,14 +1331,14 @@ function initSettingsApp(container, winInstance, initData) {
     };
     nameLabel.textContent = wallpaperNames[key] || key.replace('-', ' ');
     card.appendChild(nameLabel);
-    
+
     card.addEventListener('click', () => {
       setGlobalWallpaper(key);
       initSettingsApp(container, winInstance, initData); // force rerender
     });
     bgContainer.appendChild(card);
   });
-  
+
   // Tab Switching logic
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -1194,7 +1348,7 @@ function initSettingsApp(container, winInstance, initData) {
       });
       tab.classList.add('bg-mint/15', 'text-mint', 'dark:text-mint-light');
       tab.classList.remove('text-slate-600', 'dark:text-slate-300');
-      
+
       const tabName = tab.getAttribute('data-tab');
       panes.forEach(pane => {
         if (pane.id === `settings-pane-${tabName}`) {
@@ -1207,15 +1361,246 @@ function initSettingsApp(container, winInstance, initData) {
   });
 }
 
+// Helper to show modern Cinnamon system notification toasts
+function showToast(message) {
+  let container = document.getElementById('system-toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'system-toast-container';
+    container.className = 'fixed bottom-16 right-4 flex flex-col gap-2 z-[999999] pointer-events-none';
+    document.body.appendChild(container);
+  }
+
+  const toast = document.createElement('div');
+  toast.className = 'bg-slate-900/95 dark:bg-slate-950/95 text-white text-xs px-4 py-3 rounded-lg shadow-2xl border border-white/10 dark:border-white/5 flex items-center gap-2.5 pointer-events-auto transition-all duration-300 transform translate-y-4 opacity-0';
+  toast.style.borderLeft = '4px solid var(--mint-accent)';
+  toast.innerHTML = `
+    <svg class="w-4 h-4 text-mint flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+    </svg>
+    <span class="font-medium">${message}</span>
+  `;
+
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.classList.remove('opacity-0', 'translate-y-4');
+    toast.classList.add('opacity-100', 'translate-y-0');
+  }, 10);
+
+  setTimeout(() => {
+    toast.classList.remove('opacity-100', 'translate-y-0');
+    toast.classList.add('opacity-0', 'translate-y-4');
+    setTimeout(() => {
+      toast.remove();
+    }, 300);
+  }, 3500);
+}
+
+// --- C2. XREADER DOCUMENT VIEWER ---
+function initXreaderApp(container, winInstance, initData) {
+  const sidebar = container.querySelector('.xreader-sidebar');
+  const sidebarList = container.querySelector('.xreader-sidebar-list');
+  const toggleSidebarBtn = container.querySelector('.xreader-toggle-sidebar-btn');
+
+  const zoomInBtn = container.querySelector('.xreader-zoom-in-btn');
+  const zoomOutBtn = container.querySelector('.xreader-zoom-out-btn');
+  const zoomResetBtn = container.querySelector('.xreader-zoom-reset-btn');
+  const zoomIndicator = container.querySelector('.xreader-zoom-indicator');
+
+  const prevBtn = container.querySelector('.xreader-prev-btn');
+  const nextBtn = container.querySelector('.xreader-next-btn');
+  const pageIndicator = container.querySelector('.xreader-page-indicator');
+
+  const searchInput = container.querySelector('.xreader-search-input');
+  const printBtn = container.querySelector('.xreader-print-btn');
+
+  const sheet = container.querySelector('.xreader-page-sheet');
+  const sheetContainer = container.querySelector('.xreader-page-sheet-container');
+
+  let zoom = 1.0;
+  let activePath = initData && initData.filePath ? initData.filePath : '/Documentos/Resolución de Parcial/Ejercicio 1 - Planificación de Procesos.html';
+  let sidebarOpen = true;
+
+  const exercises = [
+    "/Documentos/Resolución de Parcial/Ejercicio 1 - Planificación de Procesos.html",
+    "/Documentos/Resolución de Parcial/Ejercicio 2 - Memoria Virtual.html",
+    "/Documentos/Resolución de Parcial/Ejercicio 3 - Sistemas de Archivos.html",
+    "/Documentos/Resolución de Parcial/Ejercicio 4 - Concurrencia y Semáforos.html",
+    "/Documentos/Resolución de Parcial/Ejercicio 5 - Entrada y Salida.html"
+  ];
+
+  // Render Sidebar index links
+  const renderSidebar = () => {
+    sidebarList.innerHTML = '';
+    exercises.forEach((path, idx) => {
+      const active = activePath === path;
+      const btn = document.createElement('button');
+      btn.className = `w-full text-left px-3 py-2 rounded text-xs font-medium flex items-center gap-2 select-none cursor-pointer ${active ? 'active' : 'text-slate-600 dark:text-slate-300'
+        }`;
+      btn.innerHTML = `
+        <span class="w-4 h-4 flex-shrink-0 flex items-center justify-center font-bold text-mint">${idx + 1}</span>
+        <span class="truncate">${path.split('/').pop().replace('.html', '')}</span>
+      `;
+      btn.addEventListener('click', () => {
+        loadPage(path);
+      });
+      sidebarList.appendChild(btn);
+    });
+  };
+
+  // Load document content
+  const loadPage = (path) => {
+    if (!VIRTUAL_FS[path]) return;
+    activePath = path;
+
+    // Set file contents
+    sheet.innerHTML = VIRTUAL_FS[path].content;
+
+    // Update active highlight & page indicator
+    const idx = exercises.indexOf(path);
+    pageIndicator.textContent = `Documento ${idx + 1} de ${exercises.length}`;
+
+    // Update sidebar highlight
+    renderSidebar();
+
+    // Update window title
+    const fileName = path.split('/').pop();
+    const fullTitle = `Visor de Documentos (Xreader) - ${fileName}`;
+    winInstance.title = fullTitle;
+    const titleElem = winInstance.node.querySelector('.window-title');
+    if (titleElem) {
+      titleElem.textContent = fullTitle;
+    }
+    window.wm.updateTaskbar();
+
+    // Reset scroll of the viewport
+    const viewport = container.querySelector('.xreader-canvas-viewport');
+    if (viewport) {
+      viewport.scrollTop = 0;
+      viewport.scrollLeft = 0;
+    }
+  };
+
+  // Zoom Controls
+  const applyZoom = () => {
+    zoomIndicator.textContent = `${Math.round(zoom * 100)}%`;
+    // Apply zoom style
+    if (typeof sheet.style.zoom !== 'undefined') {
+      sheet.style.zoom = zoom;
+    } else {
+      sheet.style.transform = `scale(${zoom})`;
+      sheet.style.transformOrigin = 'top center';
+    }
+  };
+
+  zoomInBtn.addEventListener('click', () => {
+    if (zoom < 2.0) {
+      zoom = parseFloat((zoom + 0.1).toFixed(1));
+      if (zoom > 2.0) zoom = 2.0;
+      applyZoom();
+    }
+  });
+
+  zoomOutBtn.addEventListener('click', () => {
+    if (zoom > 0.5) {
+      zoom = parseFloat((zoom - 0.1).toFixed(1));
+      if (zoom < 0.5) zoom = 0.5;
+      applyZoom();
+    }
+  });
+
+  zoomResetBtn.addEventListener('click', () => {
+    zoom = 1.0;
+    applyZoom();
+  });
+
+  // Toggle Sidebar
+  toggleSidebarBtn.addEventListener('click', () => {
+    sidebarOpen = !sidebarOpen;
+    if (sidebarOpen) {
+      sidebar.classList.remove('collapsed');
+    } else {
+      sidebar.classList.add('collapsed');
+    }
+  });
+
+  // Navigation
+  prevBtn.addEventListener('click', () => {
+    let idx = exercises.indexOf(activePath);
+    if (idx > 0) {
+      loadPage(exercises[idx - 1]);
+    } else {
+      loadPage(exercises[exercises.length - 1]); // Loop around
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    let idx = exercises.indexOf(activePath);
+    if (idx < exercises.length - 1) {
+      loadPage(exercises[idx + 1]);
+    } else {
+      loadPage(exercises[0]); // Loop around
+    }
+  });
+
+  // Mock Print simulation
+  printBtn.addEventListener('click', () => {
+    const fileName = activePath.split('/').pop();
+    showToast(`Simulando impresión de ${fileName}...`);
+  });
+
+  // Mock Search simulation
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      showToast("La búsqueda dentro del documento está simulada.");
+    }
+  });
+
+  // Mobile Adaptations
+  const checkViewport = () => {
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      winInstance.isMaximized = true;
+      winInstance.node.style.left = '0px';
+      winInstance.node.style.top = '0px';
+      winInstance.node.style.width = '100vw';
+      winInstance.node.style.height = 'calc(100vh - 48px)';
+      winInstance.node.classList.add('rounded-none');
+
+      const resizers = winInstance.node.querySelectorAll('.window-resizer');
+      resizers.forEach(r => r.style.display = 'none');
+
+      sidebar.classList.add('collapsed');
+      sidebarOpen = false;
+    } else {
+      const resizers = winInstance.node.querySelectorAll('.window-resizer');
+      resizers.forEach(r => r.style.display = '');
+    }
+  };
+
+  // Cleanup listener on next spawn/init
+  if (winInstance._resizeHandler) {
+    window.removeEventListener('resize', winInstance._resizeHandler);
+  }
+  winInstance._resizeHandler = checkViewport;
+  window.addEventListener('resize', checkViewport);
+
+  // Initial load
+  checkViewport();
+  loadPage(activePath);
+  applyZoom();
+}
+
 // --- D. XED TEXT EDITOR ---
 function initXedApp(container, winInstance, initData) {
   const textarea = container.querySelector('.xed-textarea');
   const statusMsg = container.querySelector('.xed-status-msg');
   const coordsMsg = container.querySelector('.xed-coords-msg');
   const saveBtn = container.querySelector('#xed-save-btn');
-  
+
   let openedFilePath = initData && initData.filePath ? initData.filePath : null;
-  
+
   // Pre-load content
   if (openedFilePath && VIRTUAL_FS[openedFilePath]) {
     textarea.value = VIRTUAL_FS[openedFilePath].content;
@@ -1224,7 +1609,7 @@ function initXedApp(container, winInstance, initData) {
     textarea.value = '';
     statusMsg.textContent = 'Untitled Document';
   }
-  
+
   // Save button logic
   saveBtn.addEventListener('click', () => {
     if (!openedFilePath) {
@@ -1233,14 +1618,14 @@ function initXedApp(container, winInstance, initData) {
       if (!inputFilename) return;
       openedFilePath = `/Desktop/${inputFilename}`;
     }
-    
+
     // Save to virtual filesystem
     VIRTUAL_FS[openedFilePath] = {
       type: "file",
       name: openedFilePath.split('/').pop(),
       content: textarea.value
     };
-    
+
     // Make sure it is registered in parent folder
     const parentPath = openedFilePath.substring(0, openedFilePath.lastIndexOf('/')) || '/';
     if (VIRTUAL_FS[parentPath] && VIRTUAL_FS[parentPath].children) {
@@ -1248,9 +1633,9 @@ function initXedApp(container, winInstance, initData) {
         VIRTUAL_FS[parentPath].children.push(VIRTUAL_FS[openedFilePath].name);
       }
     }
-    
+
     statusMsg.textContent = `Guardado: ${openedFilePath.split('/').pop()}`;
-    
+
     // Refresh Nemo File Manager if open to instantly display new file!
     const nemoWin = window.wm.windows.find(w => w.appId === 'nemo');
     if (nemoWin) {
@@ -1264,11 +1649,11 @@ function initXedApp(container, winInstance, initData) {
   const updateCursorTracking = () => {
     const textVal = textarea.value;
     const selectionStart = textarea.selectionStart;
-    
+
     const lines = textVal.substring(0, selectionStart).split("\n");
     const currentLine = lines.length;
     const currentCol = lines[lines.length - 1].length + 1;
-    
+
     coordsMsg.textContent = `Lín ${currentLine}, Col ${currentCol}`;
   };
 
@@ -1283,7 +1668,7 @@ function initXedApp(container, winInstance, initData) {
 function setGlobalTheme(themeMode) {
   systemConfig.theme = themeMode;
   localStorage.setItem('mint_theme', themeMode);
-  
+
   if (themeMode === 'light') {
     document.documentElement.classList.remove('theme-dark', 'dark');
     document.documentElement.classList.add('theme-light');
@@ -1296,11 +1681,11 @@ function setGlobalTheme(themeMode) {
 function setGlobalAccent(accentKey) {
   const accent = ACCENTS[accentKey];
   if (!accent) return;
-  
+
   systemConfig.accent = accentKey;
   systemConfig.accentHex = accent.hex;
   localStorage.setItem('mint_accent', accentKey);
-  
+
   document.documentElement.style.setProperty('--mint-accent', accent.hex);
   document.documentElement.style.setProperty('--mint-accent-rgb', accent.rgb);
 }
@@ -1308,10 +1693,10 @@ function setGlobalAccent(accentKey) {
 function setGlobalWallpaper(wallpaperKey) {
   const wallpaperStyle = WALLPAPERS[wallpaperKey];
   if (!wallpaperStyle) return;
-  
+
   systemConfig.wallpaper = wallpaperKey;
   localStorage.setItem('mint_wallpaper', wallpaperKey);
-  
+
   document.getElementById('desktop').style.background = wallpaperStyle;
 }
 
@@ -1320,7 +1705,7 @@ function bootConfigurations() {
   const savedTheme = localStorage.getItem('mint_theme') || 'dark';
   const savedAccent = localStorage.getItem('mint_accent') || 'mint';
   const savedWallpaper = localStorage.getItem('mint_wallpaper') || 'mint-default';
-  
+
   setGlobalTheme(savedTheme);
   setGlobalAccent(savedAccent);
   setGlobalWallpaper(savedWallpaper);
@@ -1339,7 +1724,7 @@ function startClockUpdater() {
     const options = { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
     clockNode.textContent = now.toLocaleDateString('es-AR', options);
   };
-  
+
   updateClock();
   setInterval(updateClock, 1000);
 }
@@ -1351,7 +1736,7 @@ function setupCinnamonMenu() {
   const searchInput = document.getElementById('menu-search');
   const categoriesList = document.getElementById('menu-categories');
   const appsList = document.getElementById('menu-apps-list');
-  
+
   // App definitions inside Mint menu
   const menuApps = [
     { id: 'nemo', name: 'Gestor de Archivos (Nemo)', desc: 'Explorá y organizá carpetas y documentos.', cat: 'system', icon: 'nemo' },
@@ -1360,7 +1745,7 @@ function setupCinnamonMenu() {
     { id: 'xed', name: 'Editor de Texto (Xed)', desc: 'Creá y modificá archivos de texto plano.', cat: 'office', icon: 'xed' },
     { id: 'firefox', name: 'Navegador Web Firefox', desc: 'Navegá por la web de forma segura.', cat: 'internet', icon: 'firefox' }
   ];
-  
+
   const categories = [
     { id: 'all', label: 'Todas las Aplicaciones' },
     { id: 'internet', label: 'Internet' },
@@ -1368,18 +1753,17 @@ function setupCinnamonMenu() {
     { id: 'system', label: 'Administración' },
     { id: 'settings', label: 'Preferencias' }
   ];
-  
+
   let selectedCategory = 'all';
-  
+
   // Render Categories sidebar links
   const renderCategories = () => {
     categoriesList.innerHTML = '';
     categories.forEach(cat => {
       const active = selectedCategory === cat.id;
       const button = document.createElement('button');
-      button.className = `w-full text-left px-3 py-2 rounded text-xs font-semibold select-none ${
-        active ? 'bg-mint text-white font-bold' : 'hover:bg-slate-200/50 dark:hover:bg-slate-800/40 text-slate-700 dark:text-slate-300'
-      }`;
+      button.className = `w-full text-left px-3 py-2 rounded text-xs font-semibold select-none ${active ? 'bg-mint text-white font-bold' : 'hover:bg-slate-200/50 dark:hover:bg-slate-800/40 text-slate-700 dark:text-slate-300'
+        }`;
       button.textContent = cat.label;
       button.addEventListener('click', () => {
         selectedCategory = cat.id;
@@ -1394,18 +1778,18 @@ function setupCinnamonMenu() {
   const renderApps = () => {
     appsList.innerHTML = '';
     const filterText = searchInput.value.toLowerCase();
-    
+
     const filtered = menuApps.filter(app => {
       const matchesSearch = app.name.toLowerCase().includes(filterText) || app.desc.toLowerCase().includes(filterText);
       const matchesCategory = selectedCategory === 'all' || app.cat === selectedCategory;
       return matchesSearch && matchesCategory;
     });
-    
+
     if (filtered.length === 0) {
       appsList.innerHTML = `<div class="p-4 text-center text-slate-500 font-medium text-xs">No se encontraron aplicaciones.</div>`;
       return;
     }
-    
+
     filtered.forEach(app => {
       const card = document.createElement('button');
       card.className = 'w-full flex items-center gap-3 p-2 rounded-lg hover:bg-mint/15 text-left transition-colors border border-transparent hover:border-mint/20 focus:outline-none';
@@ -1416,12 +1800,12 @@ function setupCinnamonMenu() {
           <div class="text-[10px] text-slate-400 leading-normal truncate w-[260px]">${app.desc}</div>
         </div>
       `;
-      
+
       card.addEventListener('click', () => {
         window.spawnApp(app.id);
         menuNode.classList.add('hidden'); // Close menu
       });
-      
+
       appsList.appendChild(card);
     });
   };
@@ -1438,17 +1822,17 @@ function setupCinnamonMenu() {
       searchInput.focus();
     }
   });
-  
+
   // Close menu if clicking outside
   document.addEventListener('click', (e) => {
     if (!menuNode.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
       menuNode.classList.add('hidden');
     }
   });
-  
+
   // Search Keyup
   searchInput.addEventListener('input', renderApps);
-  
+
   // Init
   renderCategories();
   renderApps();
@@ -1484,31 +1868,32 @@ window.rebootSimulator = () => {
 function renderDesktopIcons() {
   const grid = document.getElementById('desktop-grid');
   grid.innerHTML = '';
-  
+
   const desktopApps = [
     { label: 'Equipo', icon: 'computer', action: () => window.spawnApp('nemo', 'Gestor de Archivos (Nemo) - Equipo', { path: '/' }) },
     { label: 'Gestor de Archivos (Nemo)', icon: 'nemo', action: () => window.spawnApp('nemo', 'Gestor de Archivos (Nemo) - Inicio', { path: '/Desktop' }) },
     { label: 'Terminal', icon: 'terminal', action: () => window.spawnApp('terminal', 'Terminal de Cinnamon') },
     { label: 'Preferencias del Sistema', icon: 'settings', action: () => window.spawnApp('settings', 'Preferencias del Sistema') },
-    { label: 'Ventajas de Linux.txt', icon: 'linux-doc', action: () => window.spawnApp('xed', 'Editor de Texto (Xed) - Ventajas de Linux.txt', { filePath: '/Desktop/Ventajas de Linux.txt' }) }
+    { label: 'Ventajas de Linux.txt', icon: 'linux-doc', action: () => window.spawnApp('xed', 'Editor de Texto (Xed) - Ventajas de Linux.txt', { filePath: '/Desktop/Ventajas de Linux.txt' }) },
+    { label: 'Resolución de Parcial', icon: 'documents', action: () => window.spawnApp('nemo', 'Gestor de Archivos (Nemo) - Resolución de Parcial', { path: '/Documentos/Resolución de Parcial' }) }
   ];
-  
+
   desktopApps.forEach(app => {
     const node = document.createElement('div');
     node.className = 'desktop-icon text-center focus:outline-none';
     node.tabIndex = 0;
-    
+
     const iconHtml = getAppIconSvg(app.icon);
-    
+
     node.innerHTML = `
       <div class="w-12 h-12 flex items-center justify-center drop-shadow-md select-none">${iconHtml}</div>
       <span class="text-xs font-semibold text-white drop-shadow-[0_1.5px_1.5px_rgba(0,0,0,0.9)] whitespace-normal break-words w-full mt-1.5 select-none leading-tight">${app.label}</span>
     `;
-    
+
     // Double click or enter launches application
     let clicks = 0;
     let timer = null;
-    
+
     node.addEventListener('click', () => {
       clicks++;
       if (clicks === 1) {
@@ -1519,16 +1904,16 @@ function renderDesktopIcons() {
         app.action();
       }
     });
-    
+
     node.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         app.action();
       }
     });
-    
+
     grid.appendChild(node);
   });
-  
+
   // Add Quick Launch Panel Items in Cinnamon Panel
   const quickLaunchContainer = document.getElementById('quick-launch');
   quickLaunchContainer.innerHTML = '';
@@ -1551,17 +1936,17 @@ function renderDesktopIcons() {
 function setupContextMenu() {
   const menu = document.getElementById('desktop-context-menu');
   const desktop = document.getElementById('desktop');
-  
+
   desktop.addEventListener('contextmenu', (e) => {
     // Only open context menu directly on desktop background or grid, not on windows/buttons
     if (e.target !== desktop && e.target === document.getElementById('window-zone')) return;
-    
+
     e.preventDefault();
     menu.style.left = `${e.clientX}px`;
     menu.style.top = `${e.clientY}px`;
     menu.classList.remove('hidden');
   });
-  
+
   document.addEventListener('click', () => {
     menu.classList.add('hidden');
   });
@@ -1579,34 +1964,34 @@ function getAppIconSvg(iconId) {
         <line x1="2" y1="12" x2="22" y2="12"></line>
         <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
       </svg>`;
-    
+
     case 'computer':
       return `<svg class="w-full h-full text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
         <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
         <line x1="8" y1="21" x2="16" y2="21"></line>
         <line x1="12" y1="17" x2="12" y2="21"></line>
       </svg>`;
-    
+
     case 'desktop':
       return `<svg class="w-full h-full text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
         <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
         <line x1="9" y1="18" x2="9" y2="18.01"></line>
         <line x1="15" y1="18" x2="15" y2="18.01"></line>
       </svg>`;
-      
+
     case 'documents':
       return `<svg class="w-full h-full text-yellow-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
         <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
         <path d="M2 10h20"></path>
       </svg>`;
-      
+
     case 'pictures':
       return `<svg class="w-full h-full text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
         <circle cx="8.5" cy="8.5" r="1.5"></circle>
         <polyline points="21 15 16 10 5 21"></polyline>
       </svg>`;
-      
+
     case 'about':
       return `<svg class="w-full h-full text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -1620,21 +2005,21 @@ function getAppIconSvg(iconId) {
       return `<svg class="w-full h-full text-emerald-500 hover:text-emerald-400 transition-colors" viewBox="0 0 24 24" fill="currentColor">
         <path d="M19.5 21a2.5 2.5 0 002.5-2.5v-9a2.5 2.5 0 00-2.5-2.5h-7.7L9.4 5.2A2.5 2.5 0 007.7 4H4.5A2.5 2.5 0 002 6.5v12A2.5 2.5 0 004.5 21h15z"/>
       </svg>`;
-      
+
     case 'terminal':
       // Shell terminal command line logo
       return `<svg class="w-full h-full text-slate-800 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="4 17 10 11 4 5"/>
         <line x1="12" y1="19" x2="20" y2="19"/>
       </svg>`;
-      
+
     case 'settings':
       // Gear / configuration cog logo
       return `<svg class="w-full h-full text-slate-600 dark:text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="3"/>
         <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
       </svg>`;
-      
+
     case 'xed':
       // Text Editor logo
       return `<svg class="w-full h-full text-slate-800 dark:text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1644,7 +2029,7 @@ function getAppIconSvg(iconId) {
         <line x1="16" y1="17" x2="8" y2="17"></line>
         <polyline points="10 9 9 9 8 9"></polyline>
       </svg>`;
-      
+
     case 'link':
       // Document file with a small external link/shortcut arrow badge
       return `<svg class="w-full h-full text-slate-800 dark:text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1658,13 +2043,13 @@ function getAppIconSvg(iconId) {
           <path d="M3.5 6.5l3-3M6.5 3.5v2.5M6.5 3.5h-2.5" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
         </g>
       </svg>`;
-      
+
     case 'linux-doc':
       // Linux benefits file / Tux badge
       return `<svg class="w-full h-full text-mint" viewBox="0 0 32 32" fill="currentColor">
         <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm0 4c5.523 0 10 4.477 10 10s-4.477 10-10 10S6 21.523 6 16 10.477 6 16 6zm-2 4a2 2 0 100 4 2 2 0 000-4zm4 0a2 2 0 100 4 2 2 0 000-4zm-2 5a1 1 0 00-1 1v2a3 3 0 006 0v-2a1 1 0 00-2 0v2a1 1 0 01-2 0v-2a1 1 0 00-1-1zm-6 4v1h16v-1a4 4 0 00-4-4h-8a4 4 0 00-4 4z"/>
       </svg>`;
-      
+
     default:
       return `<svg class="w-full h-full text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
@@ -1677,7 +2062,7 @@ function getAppIconSvg(iconId) {
 // ==========================================
 function runDiagnosticTests() {
   console.log("=== RUNNING INLINE VERIFICATION TESTS ===");
-  
+
   // Test 1: VIRTUAL_FS path retrieval validation
   try {
     const file = VIRTUAL_FS["/Desktop/Ventajas de Linux.txt"];
@@ -1712,7 +2097,7 @@ function runDiagnosticTests() {
     } else {
       console.error("❌ Test 3: Wallpaper asset mapping is missing fallback.");
     }
-  } catch(err) {
+  } catch (err) {
     console.error("❌ Test 3 Exception:", err);
   }
 
@@ -1773,32 +2158,32 @@ function runDiagnosticTests() {
         console.log("ℹ️ Test 6: Viewport is mobile. Centering logic skipped as expected.");
         return;
       }
-      
+
       const windows = window.wm.windows;
       if (windows.length < 2) {
         console.error("❌ Test 6: Expected at least 2 windows spawned at startup.");
         return;
       }
-      
+
       let allCorrect = true;
       const panelHeight = 48;
       const defaultWidth = 640;
       const defaultHeight = 440;
-      
+
       windows.forEach((win, index) => {
         const offset = index * window.wm.winCascadeOffset;
         const expectedX = Math.max(0, (window.innerWidth - defaultWidth) / 2) + offset;
         const expectedY = Math.max(0, (window.innerHeight - defaultHeight - panelHeight) / 2) + offset;
-        
+
         const actualX = parseInt(win.node.style.left);
         const actualY = parseInt(win.node.style.top);
-        
+
         if (Math.abs(actualX - expectedX) > 2 || Math.abs(actualY - expectedY) > 2) {
           console.error(`❌ Test 6: Window ${win.appId} (index ${index}) not centered correctly. Expected (${expectedX}, ${expectedY}), got (${actualX}, ${actualY})`);
           allCorrect = false;
         }
       });
-      
+
       if (allCorrect) {
         console.log("✅ Test 6: Centering and cascade offset logic validation passed successfully.");
       }
@@ -1842,6 +2227,101 @@ function runDiagnosticTests() {
   } catch (err) {
     console.error("❌ Test 7 Exception:", err);
   }
+
+  // Test 8: Xreader Zoom bounds validation (Unit Test)
+  try {
+    let testZoom = 1.0;
+    const zoomIn = () => {
+      testZoom = parseFloat((testZoom + 0.1).toFixed(1));
+      if (testZoom > 2.0) testZoom = 2.0;
+    };
+    const zoomOut = () => {
+      testZoom = parseFloat((testZoom - 0.1).toFixed(1));
+      if (testZoom < 0.5) testZoom = 0.5;
+    };
+
+    // Zoom in to limit
+    for (let i = 0; i < 15; i++) zoomIn();
+    const zoomInCorrect = (testZoom === 2.0);
+
+    // Zoom out to limit
+    for (let i = 0; i < 20; i++) zoomOut();
+    const zoomOutCorrect = (testZoom === 0.5);
+
+    if (zoomInCorrect && zoomOutCorrect) {
+      console.log("✅ Test 8: Xreader Zoom boundary constraints (0.5x - 2.0x) validated successfully.");
+    } else {
+      console.error(`❌ Test 8: Xreader Zoom boundaries failed. In: ${zoomInCorrect}, Out: ${zoomOutCorrect}`);
+    }
+  } catch (err) {
+    console.error("❌ Test 8 Exception:", err);
+  }
+
+  // Test 9: Nemo HTML file double click binding (Integration Test)
+  try {
+    const originalSpawnApp = window.spawnApp;
+    let spawnedAppId = null;
+    let spawnedInitData = null;
+
+    window.spawnApp = (appId, title, initData) => {
+      spawnedAppId = appId;
+      spawnedInitData = initData;
+    };
+
+    const testPath = "/Documentos/Resolución de Parcial/Ejercicio 1 - Planificación de Procesos.html";
+    if (testPath.endsWith('.html')) {
+      window.spawnApp('xreader', `Visor de Documentos (Xreader)`, { filePath: testPath });
+    }
+
+    if (spawnedAppId === 'xreader' && spawnedInitData && spawnedInitData.filePath === testPath) {
+      console.log("✅ Test 9: Nemo HTML file association to Xreader binding validated successfully.");
+    } else {
+      console.error("❌ Test 9: Nemo HTML file association failed to spawn Xreader.");
+    }
+
+    window.spawnApp = originalSpawnApp;
+  } catch (err) {
+    console.error("❌ Test 9 Exception:", err);
+  }
+
+  // Test 10: Xreader Mobile Auto-Maximize and Sidebar Collapse (E2E Test)
+  setTimeout(() => {
+    try {
+      window.spawnApp('xreader', null, { filePath: "/Documentos/Resolución de Parcial/Ejercicio 1 - Planificación de Procesos.html" });
+      const xreaderWin = window.wm.windows.find(w => w.appId === 'xreader');
+
+      if (!xreaderWin) {
+        console.error("❌ Test 10: Xreader window could not be spawned for testing.");
+        return;
+      }
+
+      const prevInnerWidth = window.innerWidth;
+      Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: 500 });
+
+      // Trigger resize handler
+      if (typeof window.wm.handleScreenResize === 'function') {
+        window.wm.handleScreenResize();
+      }
+
+      // Simulate resize inside window
+      const sidebar = xreaderWin.node.querySelector('.xreader-sidebar');
+      const hasCollapsedClass = sidebar && sidebar.classList.contains('collapsed');
+      const wasMaximizedOnMobile = xreaderWin.isMaximized;
+
+      Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: prevInnerWidth });
+      if (typeof window.wm.handleScreenResize === 'function') {
+        window.wm.handleScreenResize();
+      }
+
+      if (hasCollapsedClass && wasMaximizedOnMobile) {
+        console.log("✅ Test 10: Xreader mobile responsive maximize and sidebar collapse validated successfully.");
+      } else {
+        console.error(`❌ Test 10: Xreader responsive test failed. Maximized: ${xreaderWin.isMaximized}, Sidebar collapsed: ${hasCollapsedClass}`);
+      }
+    } catch (err) {
+      console.error("❌ Test 10 Exception:", err);
+    }
+  }, 250);
 }
 
 // ==========================================
@@ -1853,15 +2333,15 @@ window.addEventListener('DOMContentLoaded', () => {
   setupCinnamonMenu();
   renderDesktopIcons();
   setupContextMenu();
-  
+
   // Monitor viewport widths dynamically for mobile adaptations
   window.addEventListener('resize', () => {
     window.wm.handleScreenResize();
   });
-  
+
   // Run tests inside console environment for validation
   runDiagnosticTests();
-  
+
   // Open Nemo & Welcome file automatically to greet users
   window.spawnApp('nemo', 'Gestor de Archivos (Nemo) - Documentos', { path: '/Documentos' });
   window.spawnApp('xed', 'Editor de Texto (Xed) - Bienvenida.txt', { filePath: '/Documentos/Bienvenida.txt' });

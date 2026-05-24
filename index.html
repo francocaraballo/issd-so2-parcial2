@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Linux Mint 22 Cinnamon - Simulador Interactivo</title>
+  <link rel="icon" type="image/svg+xml" href="images/linux.svg">
   <!-- Tailwind CSS v4 CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Local Custom Stylesheet -->
@@ -459,6 +460,89 @@
     </div>
   </template>
 
+  <!-- Xreader Document Viewer Content Template -->
+  <template id="app-xreader">
+    <div class="flex-grow flex flex-col min-h-0 bg-slate-100 dark:bg-slate-900 text-sm overflow-hidden select-none">
+      <!-- Toolbar -->
+      <div class="h-10 bg-slate-50 dark:bg-slate-950/40 border-b border-slate-200 dark:border-slate-800/40 px-3 flex items-center justify-between flex-shrink-0 text-slate-700 dark:text-slate-200">
+        <!-- Left tools: Sidebar toggle, zoom controls -->
+        <div class="flex items-center gap-1.5">
+          <button class="xreader-toggle-sidebar-btn p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 cursor-pointer" title="Alternar panel lateral">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+          <div class="h-4 w-px bg-slate-300 dark:bg-slate-700 mx-1"></div>
+          <button class="xreader-zoom-out-btn p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-800 cursor-pointer" title="Alejar (Zoom -)">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
+            </svg>
+          </button>
+          <span class="xreader-zoom-indicator text-xs font-semibold px-1 w-10 text-center select-none">100%</span>
+          <button class="xreader-zoom-in-btn p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-800 cursor-pointer" title="Acercar (Zoom +)">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+          </button>
+          <button class="xreader-zoom-reset-btn text-xs font-semibold px-2 py-1 rounded hover:bg-slate-200 dark:hover:bg-slate-800 cursor-pointer" title="Restablecer zoom al 100%">100%</button>
+        </div>
+
+        <!-- Middle tools: Page navigation, page indicators -->
+        <div class="flex items-center gap-1.5">
+          <button class="xreader-prev-btn p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-800 cursor-pointer" title="Página anterior">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          <span class="xreader-page-indicator text-xs font-semibold px-2 select-none">Documento 1 de 5</span>
+          <button class="xreader-next-btn p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-800 cursor-pointer" title="Página siguiente">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Right tools: Mock Search & Mock Print -->
+        <div class="flex items-center gap-2">
+          <!-- Search box -->
+          <div class="relative flex items-center">
+            <input type="text" class="xreader-search-input bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded px-2.5 py-0.5 pr-7 text-xs focus:outline-none focus:border-mint text-slate-800 dark:text-slate-100" placeholder="Buscar...">
+            <svg class="w-3.5 h-3.5 text-slate-400 absolute right-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+          <button class="xreader-print-btn p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 cursor-pointer" title="Imprimir documento">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 6 2 18 2 18 9"/>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+              <rect x="6" y="14" width="12" height="8"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Content Area -->
+      <div class="xreader-container flex-1 min-h-0 relative pointer-events-auto">
+        <!-- Sidebar Navigation Index -->
+        <div class="xreader-sidebar bg-slate-50 dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800/40 p-3 select-none">
+          <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2.5 px-2">Índice del Parcial</h4>
+          <div class="xreader-sidebar-list flex flex-col gap-1 overflow-y-auto flex-1">
+            <!-- Sidebar links will be dynamically populated in app.js -->
+          </div>
+        </div>
+
+        <!-- Main reading panel -->
+        <div class="xreader-canvas-viewport flex-1 min-w-0">
+          <div class="xreader-page-sheet-container">
+            <div class="xreader-page-sheet select-text prose dark:prose-invert max-w-none">
+              <!-- Document dynamic content gets loaded here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
   <!-- Firefox Web Browser Content Template -->
   <template id="app-firefox">
     <div class="flex-grow flex flex-col min-h-0 bg-white dark:bg-slate-900 text-sm overflow-hidden select-none">
@@ -476,6 +560,6 @@
   </template>
 
   <!-- Application JS Code -->
-  <script src="app.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>

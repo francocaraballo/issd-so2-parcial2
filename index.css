@@ -236,3 +236,183 @@ body {
   justify-content: flex-start !important;
   padding-bottom: 8px;
 }
+
+/* ==========================================
+   Xreader Application Styling
+   ========================================== */
+.xreader-container {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+/* Sidebar list index */
+.xreader-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.2s ease, padding 0.2s ease, border-width 0.2s ease;
+}
+
+.xreader-sidebar.collapsed {
+  width: 0px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  border-right-width: 0px !important;
+  overflow: hidden;
+}
+
+.xreader-sidebar-list button {
+  transition: all 0.15s ease;
+}
+
+.xreader-sidebar-list button:hover {
+  background-color: rgba(143, 174, 83, 0.1);
+  color: var(--mint-accent);
+}
+
+.xreader-sidebar-list button.active {
+  background-color: rgba(143, 174, 83, 0.18);
+  color: var(--mint-accent);
+  border-left: 3px solid var(--mint-accent);
+  padding-left: calc(0.75rem - 3px);
+}
+
+/* Main Canvas Viewport */
+.xreader-canvas-viewport {
+  flex: 1;
+  overflow: auto;
+  background-color: #f1f5f9;
+  padding: 2.5rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.dark .xreader-canvas-viewport {
+  background-color: #0f172a;
+}
+
+/* A4 Sheet Simulation */
+.xreader-page-sheet-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  transform-origin: top center;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.xreader-page-sheet {
+  background-color: #ffffff;
+  color: #0f172a;
+  width: 210mm;
+  min-height: 297mm;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  padding: 3rem 2.5rem;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  user-select: text; /* Allow text selection inside pages */
+}
+
+.dark .xreader-page-sheet {
+  background-color: #1e293b;
+  color: #f8fafc;
+  border-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Content Typography inside A4 page */
+.xreader-page-sheet h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.dark .xreader-page-sheet h1 {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.xreader-page-sheet h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-top: 1.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.xreader-page-sheet p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.xreader-page-sheet ul, .xreader-page-sheet ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  list-style-type: disc;
+}
+
+.xreader-page-sheet li {
+  margin-bottom: 0.4rem;
+  line-height: 1.5;
+}
+
+/* Responsive media scaling */
+.xreader-page-sheet img {
+  display: block;
+  margin: 1.5rem auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+.xreader-page-sheet iframe {
+  display: block;
+  margin: 1.5rem auto;
+  max-width: 100%;
+}
+
+/* Interactive elements */
+.xreader-btn {
+  cursor: pointer;
+}
+
+/* Mobile-Specific Adaptations (< 768px) */
+@media (max-width: 767px) {
+  .xreader-sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 40;
+    box-shadow: 10px 0 15px -3px rgba(0, 0, 0, 0.12);
+  }
+  
+  .dark .xreader-sidebar {
+    box-shadow: 10px 0 25px -3px rgba(0, 0, 0, 0.5);
+  }
+  
+  .xreader-canvas-viewport {
+    padding: 1rem 0.5rem;
+  }
+  
+  .xreader-page-sheet {
+    width: 100% !important;
+    padding: 2rem 1.2rem !important;
+    min-height: auto !important;
+    border-radius: 0px !important;
+    border-left: none !important;
+    border-right: none !important;
+  }
+  
+  .xreader-page-sheet-container {
+    transform: none !important; /* Lock zoom to normal on mobile since we fit to screen */
+  }
+}
+
