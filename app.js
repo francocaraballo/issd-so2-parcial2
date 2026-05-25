@@ -57,27 +57,63 @@ Gracias a entornos de escritorio livianos (como MATE o XFCE) y un consumo de RAM
       "Parte 2 - Investigacion y Experimentacion.html",
       "Parte 3 - Linux para diferentes personas.html",
       "Parte 4 - Linux, el motor de la IA.html",
-      "Parte 5 - Conclusión gr  "/Documentos/Resolución de Parcial/Parte 1 - Instalacion Virtual Box y Linux Mint.html": {
+      "Parte 5 - Conclusión grupal.html"
+    ]
+  },
+  "/Documentos/Resolución de Parcial/Parte 1 - Instalacion Virtual Box y Linux Mint.html": {
     type: "file",
     name: "Parte 1 - Instalacion Virtual Box y Linux Mint.html",
     content: `
-      <h1 class="text-2xl font-bold text-slate-800 dark:text-white mb-4">Consgina 1: Instalación y Primeros Pasos</h1>
-      <h2 class="text-lg font-semibold text-slate-700 dark:text-slate-200 mt-6 mb-2">1.1 Instalación de Virtualbox y LinuxMint en una máquina virtual.</h2>
+      <h1 class="text-2xl font-bold text-slate-800 dark:text-white mb-4 border-b border-slate-200 dark:border-slate-800 pb-2">Consigna 1: Instalación y Primeros Pasos</h1>
+
+      <h2 class="text-lg font-semibold text-slate-700 dark:text-slate-200 mt-6 mb-2">1.1 Instalación de Virtualbox y Linux Mint en una máquina virtual</h2>
       <p class="text-slate-600 dark:text-slate-300 mb-4">
         Video de muestra de instalación del software de Oracle VirtualBox, que funciona como ecosistema de emulación y prueba de sistemas operativos. Se incluyen los puntos 1.2, 1.3 y 1.4.
       </p>
+
       <div class="my-6 flex justify-center">
-        <img src="images/consigna_1.png" alt="Instalación de Linux Mint" class="rounded-lg shadow-lg border border-slate-200 dark:border-slate-800 max-w-full h-auto">
+        <img src="images/consigna_1_a.png" alt="Instalación de Linux Mint" class="rounded-lg shadow-lg border border-slate-200 dark:border-slate-800 max-w-full h-auto">
       </div>
-      <p class="text-slate-600 dark:text-slate-300 mt-4">
+
+      <p class="text-slate-600 dark:text-slate-300 mt-4 mb-2">
         Link al video tutorial: 
         <a href="https://www.youtube.com/watch?v=2q2drKX9rP4" target="_blank" class="text-mint hover:underline font-semibold inline-flex items-center gap-1">
-          Instalacion paso a paso
+          Instalación paso a paso
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
         </a>
       </p>
+
       <div class="my-6 aspect-video rounded-lg overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800">
         <iframe class="w-full h-full" src="https://www.youtube.com/embed/2q2drKX9rP4" title="Video tutorial de instalación" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+      <h1 class="text-2xl font-bold text-slate-800 dark:text-white mt-10 mb-4 border-b border-slate-200 dark:border-slate-800 pb-2">Parte 2: Investigación y Experimentación Guiada</h1>
+
+      <h2 class="text-lg font-semibold text-slate-700 dark:text-slate-200 mt-6 mb-2">Consigna 1 – El mundo post-windows 10</h2>
+
+      <div class="space-y-6">
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+          <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-2">1.1. Investigación - El fin de una era</h3>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Cuando un sistema alcanza el fin de su ciclo de vida oficial (comúnmente denominado <em>End of Support</em> o EoS), el desarrollador cesa de forma definitiva la provisión de actualizaciones de software, correcciones de errores críticos y parches de seguridad esenciales. Si bien el entorno operativo continuará su ejecución, el sistema quedará en un estado de vulnerabilidad técnica y obsolescencia funcional. El riesgo principal de usar software sin soporte es la exposición total ante ciberataques, ya que las puertas traseras del programa quedan abiertas de forma permanente.
+          </p>
+        </div>
+
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+          <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-2">1.2. Experimentación - Reviviendo hardware antiguo</h3>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+            Linux funciona de manera más eficiente, comparado con Windows 11, ya que no tiene procesos ejecutándose en segundo plano, como telemetría. Además, el kernel de Linux está altamente optimizado para aprovechar al máximo el hardware de una PC, por este motivo también funciona para “revivir” computadoras antiguas. Un punto muy importante es que las interfaces de Linux son muchos más ligeras y en el caso de querer otras se pueden instalar.
+          </p>
+          
+          <div class="my-4 flex justify-center">
+            <img src="images/consigna_1_b.png" alt="Hardware antiguo con Linux" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto">
+          </div>
+          
+          <h4 class="text-sm font-semibold text-slate-700 dark:text-slate-200 mt-4 mb-2">Monitor de recursos de Linux Mint:</h4>
+          <div class="my-4 flex justify-center">
+            <img src="images/consigna_1_c.png" alt="Monitor de recursos" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto">
+          </div>
+        </div>
       </div>
     `
   },
@@ -353,10 +389,6 @@ Gracias a entornos de escritorio livianos (como MATE o XFCE) y un consumo de RAM
       </p>
     `
   },
-  "/Documentos/Trabajo Escrito (Google Docs).url": {="https://www.youtube.com/embed/YpTMc_H3QoA" allowfullscreen></iframe>
-      </div>
-    `
-  },
   "/Documentos/Trabajo Escrito (Google Docs).url": {
     type: "file",
     name: "Trabajo Escrito (Google Docs).url",
@@ -493,7 +525,7 @@ class WindowManager {
   }
 
   // Create Window Instance
-  createWindow(appId, title, initData = null) {
+  createWindow(appId, title, initData = null, options = {}) {
     const template = document.getElementById('window-template');
     const clone = template.content.cloneNode(true);
     const windowNode = clone.querySelector('.app-window');
@@ -522,11 +554,21 @@ class WindowManager {
       initialY = Math.max(0, (window.innerHeight - initialHeight - panelHeight) / 2) + offset;
     }
 
+    const startMaximized = options.isMaximized !== undefined ? options.isMaximized : isMobile;
+
     // Set position
-    windowNode.style.left = `${initialX}px`;
-    windowNode.style.top = `${initialY}px`;
-    windowNode.style.width = `${initialWidth}px`;
-    windowNode.style.height = `${initialHeight}px`;
+    if (startMaximized) {
+      windowNode.style.left = '0px';
+      windowNode.style.top = '0px';
+      windowNode.style.width = '100vw';
+      windowNode.style.height = 'calc(100vh - 48px)';
+      windowNode.classList.add('rounded-none');
+    } else {
+      windowNode.style.left = `${initialX}px`;
+      windowNode.style.top = `${initialY}px`;
+      windowNode.style.width = `${initialWidth}px`;
+      windowNode.style.height = `${initialHeight}px`;
+    }
 
     // Window Instance object
     const winInstance = {
@@ -538,9 +580,9 @@ class WindowManager {
       y: initialY,
       width: initialWidth,
       height: initialHeight,
-      isMinimized: false,
-      isMaximized: isMobile,
-      desktopMaximized: false,
+      isMinimized: options.isMinimized !== undefined ? options.isMinimized : false,
+      isMaximized: startMaximized,
+      desktopMaximized: options.isMaximized !== undefined ? options.isMaximized : false,
       savedX: initialX,
       savedY: initialY,
       savedWidth: initialWidth,
@@ -572,8 +614,12 @@ class WindowManager {
     this.zStack.push(winId);
 
     // Focus and draw taskbar
-    this.focusWindow(winId);
-    this.updateTaskbar();
+    if (winInstance.isMinimized) {
+      windowNode.style.display = 'none';
+      this.updateTaskbar();
+    } else {
+      this.focusWindow(winId);
+    }
 
     return winInstance;
   }
@@ -993,7 +1039,7 @@ class WindowManager {
 
 // Global reference
 window.wm = new WindowManager();
-window.spawnApp = (appId, title, initData = null) => {
+window.spawnApp = (appId, title, initData = null, options = {}) => {
   let winTitle = title;
   if (!winTitle) {
     switch (appId) {
@@ -1016,7 +1062,14 @@ window.spawnApp = (appId, title, initData = null) => {
       if (titleElem) {
         titleElem.textContent = winTitle;
       }
-      window.wm.restoreWindow(existing.id);
+      if (options.isMinimized === true) {
+        window.wm.minimizeWindow(existing.id);
+      } else {
+        window.wm.restoreWindow(existing.id);
+      }
+      if (options.isMaximized === true && !existing.isMaximized) {
+        window.wm.toggleMaximize(existing.id);
+      }
       if (initData) {
         // Re-init with new path/data
         const contentContainer = existing.node.querySelector('.window-content');
@@ -1028,7 +1081,7 @@ window.spawnApp = (appId, title, initData = null) => {
     }
   }
 
-  window.wm.createWindow(appId, winTitle, initData);
+  window.wm.createWindow(appId, winTitle, initData, options);
 };
 
 // ==========================================
@@ -2353,8 +2406,8 @@ function runDiagnosticTests() {
         const expectedX = Math.max(0, (window.innerWidth - defaultWidth) / 2) + offset;
         const expectedY = Math.max(0, (window.innerHeight - defaultHeight - panelHeight) / 2) + offset;
 
-        const actualX = parseInt(win.node.style.left);
-        const actualY = parseInt(win.node.style.top);
+        const actualX = win.isMaximized ? win.savedX : (parseInt(win.node.style.left) || 0);
+        const actualY = win.isMaximized ? win.savedY : (parseInt(win.node.style.top) || 0);
 
         if (Math.abs(actualX - expectedX) > 2 || Math.abs(actualY - expectedY) > 2) {
           console.error(`❌ Test 6: Window ${win.appId} (index ${index}) not centered correctly. Expected (${expectedX}, ${expectedY}), got (${actualX}, ${actualY})`);
@@ -2441,7 +2494,7 @@ function runDiagnosticTests() {
     let spawnedAppId = null;
     let spawnedInitData = null;
 
-    window.spawnApp = (appId, title, initData) => {
+    window.spawnApp = (appId, title, initData, options) => {
       spawnedAppId = appId;
       spawnedInitData = initData;
     };
@@ -2523,7 +2576,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // Run tests inside console environment for validation
   runDiagnosticTests();
 
-  // Open Xreader (Resolution) & Xed (Welcome) automatically to greet users
+  // Open Xreader (Resolution) & Xed (Welcome) automatically, with Xed focused on top
   window.spawnApp('xreader', 'Visor de Documentos (Xreader) - Parte 1 - Instalacion Virtual Box y Linux Mint.html', { filePath: '/Documentos/Resolución de Parcial/Parte 1 - Instalacion Virtual Box y Linux Mint.html' });
   window.spawnApp('xed', 'Editor de Texto (Xed) - Bienvenida.txt', { filePath: '/Documentos/Bienvenida.txt' });
 });

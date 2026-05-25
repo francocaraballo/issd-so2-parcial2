@@ -16,7 +16,7 @@ export class WindowManager {
   }
 
   // Create Window Instance
-  createWindow(appId, title, initData = null) {
+  createWindow(appId, title, initData = null, options = {}) {
     const template = document.getElementById('window-template');
     const clone = template.content.cloneNode(true);
     const windowNode = clone.querySelector('.app-window');
@@ -45,11 +45,21 @@ export class WindowManager {
       initialY = Math.max(0, ((window.innerHeight - initialHeight - panelHeight) / 2) + offset);
     }
 
+    const startMaximized = options.isMaximized !== undefined ? options.isMaximized : isMobile;
+
     // Set position
-    windowNode.style.left = `${initialX}px`;
-    windowNode.style.top = `${initialY}px`;
-    windowNode.style.width = `${initialWidth}px`;
-    windowNode.style.height = `${initialHeight}px`;
+    if (startMaximized) {
+      windowNode.style.left = '0px';
+      windowNode.style.top = '0px';
+      windowNode.style.width = '100vw';
+      windowNode.style.height = 'calc(100vh - 48px)';
+      windowNode.classList.add('rounded-none');
+    } else {
+      windowNode.style.left = `${initialX}px`;
+      windowNode.style.top = `${initialY}px`;
+      windowNode.style.width = `${initialWidth}px`;
+      windowNode.style.height = `${initialHeight}px`;
+    }
 
     // Window Instance object
     const winInstance = {
@@ -61,9 +71,9 @@ export class WindowManager {
       y: initialY,
       width: initialWidth,
       height: initialHeight,
-      isMinimized: false,
-      isMaximized: isMobile,
-      desktopMaximized: false,
+      isMinimized: options.isMinimized !== undefined ? options.isMinimized : false,
+      isMaximized: startMaximized,
+      desktopMaximized: options.isMaximized !== undefined ? options.isMaximized : false,
       savedX: initialX,
       savedY: initialY,
       savedWidth: initialWidth,
@@ -95,8 +105,12 @@ export class WindowManager {
     this.zStack.push(winId);
 
     // Focus and draw taskbar
-    this.focusWindow(winId);
-    this.updateTaskbar();
+    if (winInstance.isMinimized) {
+      windowNode.style.display = 'none';
+      this.updateTaskbar();
+    } else {
+      this.focusWindow(winId);
+    }
 
     return winInstance;
   }
@@ -516,7 +530,7 @@ export class WindowManager {
 
 export const wm = new WindowManager();
 
-export function spawnApp(appId, title, initData = null) {
+export function spawnApp(appId, title, initData = null, options = {}) {
   let winTitle = title;
   if (!winTitle) {
     switch (appId) {
@@ -539,7 +553,14 @@ export function spawnApp(appId, title, initData = null) {
       if (titleElem) {
         titleElem.textContent = winTitle;
       }
-      wm.restoreWindow(existing.id);
+      if (options.isMinimized === true) {
+        wm.minimizeWindow(existing.id);
+      } else {
+        wm.restoreWindow(existing.id);
+      }
+      if (options.isMaximized === true && !existing.isMaximized) {
+        wm.toggleMaximize(existing.id);
+      }
       if (initData) {
         // Re-init with new path/data
         const contentContainer = existing.node.querySelector('.window-content');
@@ -551,7 +572,7 @@ export function spawnApp(appId, title, initData = null) {
     }
   }
 
-  wm.createWindow(appId, winTitle, initData);
+  wm.createWindow(appId, winTitle, initData, options);
 }
 
 window.wm = wm;

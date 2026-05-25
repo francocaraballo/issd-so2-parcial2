@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // Run tests inside console environment for validation
   runDiagnosticTests();
 
-  // Open Xreader (Resolution) & Xed (Welcome) automatically to greet users
+  // Open Xreader (Resolution) & Xed (Welcome) automatically, with Xed focused on top
   window.spawnApp('xreader', 'Visor de Documentos (Xreader) - Parte 1 - Instalacion Virtual Box y Linux Mint.html', { filePath: '/Documentos/Resolución de Parcial/Parte 1 - Instalacion Virtual Box y Linux Mint.html' });
   window.spawnApp('xed', 'Editor de Texto (Xed) - Bienvenida.txt', { filePath: '/Documentos/Bienvenida.txt' });
 });

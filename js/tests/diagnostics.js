@@ -116,8 +116,8 @@ export function runDiagnosticTests() {
         const expectedX = Math.max(0, ((window.innerWidth - defaultWidth) / 2) - offset);
         const expectedY = Math.max(0, ((window.innerHeight - defaultHeight - panelHeight) / 2) + offset);
 
-        const actualX = parseInt(win.node.style.left);
-        const actualY = parseInt(win.node.style.top);
+        const actualX = win.isMaximized ? win.savedX : (parseInt(win.node.style.left) || 0);
+        const actualY = win.isMaximized ? win.savedY : (parseInt(win.node.style.top) || 0);
 
         if (Math.abs(actualX - expectedX) > 2 || Math.abs(actualY - expectedY) > 2) {
           console.error(`❌ Test 6: Window ${win.appId} (index ${index}) not centered correctly. Expected (${expectedX}, ${expectedY}), got (${actualX}, ${actualY})`);
@@ -204,7 +204,7 @@ export function runDiagnosticTests() {
     let spawnedAppId = null;
     let spawnedInitData = null;
 
-    window.spawnApp = (appId, title, initData) => {
+    window.spawnApp = (appId, title, initData, options) => {
       spawnedAppId = appId;
       spawnedInitData = initData;
     };

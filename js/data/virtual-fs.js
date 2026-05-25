@@ -60,23 +60,56 @@ Gracias a entornos de escritorio livianos (como MATE o XFCE) y un consumo de RAM
     type: "file",
     name: "Parte 1 - Instalacion Virtual Box y Linux Mint.html",
     content: `
-      <h1 class="text-2xl font-bold text-slate-800 dark:text-white mb-4">Consgina 1: Instalación y Primeros Pasos</h1>
-      <h2 class="text-lg font-semibold text-slate-700 dark:text-slate-200 mt-6 mb-2">1.1 Instalación de Virtualbox y LinuxMint en una máquina virtual.</h2>
+      <h1 class="text-2xl font-bold text-slate-800 dark:text-white mb-4 border-b border-slate-200 dark:border-slate-800 pb-2">Consigna 1: Instalación y Primeros Pasos</h1>
+
+      <h2 class="text-lg font-semibold text-slate-700 dark:text-slate-200 mt-6 mb-2">1.1 Instalación de Virtualbox y Linux Mint en una máquina virtual</h2>
       <p class="text-slate-600 dark:text-slate-300 mb-4">
         Video de muestra de instalación del software de Oracle VirtualBox, que funciona como ecosistema de emulación y prueba de sistemas operativos. Se incluyen los puntos 1.2, 1.3 y 1.4.
       </p>
+
       <div class="my-6 flex justify-center">
-        <img src="images/consigna_1.png" alt="Instalación de Linux Mint" class="rounded-lg shadow-lg border border-slate-200 dark:border-slate-800 max-w-full h-auto">
+        <img src="images/consigna_1_a.png" alt="Instalación de Linux Mint" class="rounded-lg shadow-lg border border-slate-200 dark:border-slate-800 max-w-full h-auto">
       </div>
-      <p class="text-slate-600 dark:text-slate-300 mt-4">
+
+      <p class="text-slate-600 dark:text-slate-300 mt-4 mb-2">
         Link al video tutorial: 
         <a href="https://www.youtube.com/watch?v=2q2drKX9rP4" target="_blank" class="text-mint hover:underline font-semibold inline-flex items-center gap-1">
-          Instalacion paso a paso
+          Instalación paso a paso
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
         </a>
       </p>
+
       <div class="my-6 aspect-video rounded-lg overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800">
         <iframe class="w-full h-full" src="https://www.youtube.com/embed/2q2drKX9rP4" title="Video tutorial de instalación" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+      <h1 class="text-2xl font-bold text-slate-800 dark:text-white mt-10 mb-4 border-b border-slate-200 dark:border-slate-800 pb-2">Parte 2: Investigación y Experimentación Guiada</h1>
+
+      <h2 class="text-lg font-semibold text-slate-700 dark:text-slate-200 mt-6 mb-2">Consigna 1 – El mundo post-windows 10</h2>
+
+      <div class="space-y-6">
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+          <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-2">1.1. Investigación - El fin de una era</h3>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Cuando un sistema alcanza el fin de su ciclo de vida oficial (comúnmente denominado <em>End of Support</em> o EoS), el desarrollador cesa de forma definitiva la provisión de actualizaciones de software, correcciones de errores críticos y parches de seguridad esenciales. Si bien el entorno operativo continuará su ejecución, el sistema quedará en un estado de vulnerabilidad técnica y obsolescencia funcional. El riesgo principal de usar software sin soporte es la exposición total ante ciberataques, ya que las puertas traseras del programa quedan abiertas de forma permanente.
+          </p>
+        </div>
+
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+          <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-2">1.2. Experimentación - Reviviendo hardware antiguo</h3>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+            Linux funciona de manera más eficiente, comparado con Windows 11, ya que no tiene procesos ejecutándose en segundo plano, como telemetría. Además, el kernel de Linux está altamente optimizado para aprovechar al máximo el hardware de una PC, por este motivo también funciona para “revivir” computadoras antiguas. Un punto muy importante es que las interfaces de Linux son muchos más ligeras y en el caso de querer otras se pueden instalar.
+          </p>
+          
+          <div class="my-4 flex justify-center">
+            <img src="images/consigna_1_b.png" alt="Hardware antiguo con Linux" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto">
+          </div>
+          
+          <h4 class="text-sm font-semibold text-slate-700 dark:text-slate-200 mt-4 mb-2">Monitor de recursos de Linux Mint:</h4>
+          <div class="my-4 flex justify-center">
+            <img src="images/consigna_1_c.png" alt="Monitor de recursos" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto">
+          </div>
+        </div>
       </div>
     `
   },
