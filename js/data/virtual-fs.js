@@ -56,123 +56,300 @@ Gracias a entornos de escritorio livianos (como MATE o XFCE) y un consumo de RAM
       "Parte 5 - Conclusión grupal.html"
     ]
   },
-  "/Documentos/Resolución de Parcial/Ejercicio 1 - Planificación de Procesos.html": {
+  "/Documentos/Resolución de Parcial/Parte 1 - Instalacion Virtual Box y Linux Mint.html": {
     type: "file",
     name: "Parte 1 - Instalacion Virtual Box y Linux Mint.html",
     content: `
-      <h1>Parte 1 - Instalacion Virtual Box y Linux Mint.html</h1>
-      <p>La planificación de la CPU consiste en determinar qué proceso en la cola de Listos (Ready Queue) recibe el uso del procesador cuando este queda libre. El objetivo principal es maximizar el uso de la CPU y brindar tiempos de respuesta óptimos para el usuario.</p>
-      <h2>Algoritmos de Planificación</h2>
-      <ul>
-        <li><strong>First-Come, First-Served (FCFS):</strong> Planificación no apropiativa donde el primer proceso que llega se ejecuta primero. Sencillo pero propenso al "efecto convoy".</li>
-        <li><strong>Shortest Job First (SJF):</strong> Ejecuta el proceso con la ráfaga de CPU más corta. Es óptimo porque minimiza el tiempo de espera promedio.</li>
-        <li><strong>Shortest Remaining Time First (SRTF):</strong> Versión apropiativa de SJF. Si llega un proceso con menor tiempo restante que el actual, se apropia del procesador.</li>
-        <li><strong>Round Robin (RR):</strong> Algoritmo diseñado para sistemas de tiempo compartido. Cada proceso recibe una pequeña porción de tiempo de CPU (quantum). Si no termina, vuelve al final de la cola.</li>
-      </ul>
-      <img src="images/scheduling_diagram.png" class="max-w-full h-auto rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 mx-auto" alt="Diagrama de Planificación de CPU" />
-      <p>A continuación se presenta un video explicativo sobre los criterios de planificación y cómo se calculan las métricas clave como el tiempo de retorno (turnaround) y el tiempo de espera (waiting time):</p>
-      <div class="relative w-full aspect-video my-4 rounded-lg overflow-hidden shadow-md">
-        <iframe class="absolute top-0 left-0 w-full h-full border-0 aspect-video" src="https://www.youtube.com/embed/YpTMc_H3QoA" allowfullscreen></iframe>
+      <h1 class="text-2xl font-bold text-slate-800 dark:text-white mb-4">Consgina 1: Instalación y Primeros Pasos</h1>
+      <h2 class="text-lg font-semibold text-slate-700 dark:text-slate-200 mt-6 mb-2">1.1 Instalación de Virtualbox y LinuxMint en una máquina virtual.</h2>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        Video de muestra de instalación del software de Oracle VirtualBox, que funciona como ecosistema de emulación y prueba de sistemas operativos. Se incluyen los puntos 1.2, 1.3 y 1.4.
+      </p>
+      <div class="my-6 flex justify-center">
+        <img src="images/consigna_1.png" alt="Instalación de Linux Mint" class="rounded-lg shadow-lg border border-slate-200 dark:border-slate-800 max-w-full h-auto">
+      </div>
+      <p class="text-slate-600 dark:text-slate-300 mt-4">
+        Link al video tutorial: 
+        <a href="https://www.youtube.com/watch?v=2q2drKX9rP4" target="_blank" class="text-mint hover:underline font-semibold inline-flex items-center gap-1">
+          Instalacion paso a paso
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </p>
+      <div class="my-6 aspect-video rounded-lg overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800">
+        <iframe class="w-full h-full" src="https://www.youtube.com/embed/2q2drKX9rP4" title="Video tutorial de instalación" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     `
   },
-  "/Documentos/Resolución de Parcial/Ejercicio 2 - Memoria Virtual.html": {
+  "/Documentos/Resolución de Parcial/Parte 2 - Investigacion y Experimentacion.html": {
     type: "file",
-    name: "Ejercicio 2 - Memoria Virtual.html",
+    name: "Parte 2 - Investigacion y Experimentacion.html",
     content: `
-      <h1>Ejercicio 2: Memoria Virtual</h1>
-      <p>La memoria virtual es una técnica de gestión de memoria que permite al sistema operativo proveer a cada proceso un espacio de direccionamiento lógico contiguo y grande, simulando que tiene más memoria física de la realmente disponible. Esto se logra mediante la paginación y la traducción dinámica de direcciones.</p>
-      <h2>Conceptos Clave de Paginación</h2>
-      <ul>
-        <li><strong>Páginas y Marcos de Página:</strong> El espacio de direcciones lógicas se divide en páginas de tamaño fijo, y la memoria física se divide en marcos (frames) de igual tamaño.</li>
-        <li><strong>Tabla de Páginas (Page Table):</strong> Mantiene la correspondencia entre las páginas lógicas y los marcos físicos de memoria, incluyendo bits de validez/invalidez, de modificación (dirty) y de referencia.</li>
-        <li><strong>Fallo de Página (Page Fault):</strong> Excepción de hardware producida cuando un proceso intenta acceder a una página lógica que no se encuentra mapeada en la memoria RAM física.</li>
+      <h1 class="text-2xl font-bold text-slate-800 dark:text-white mb-4">Consigna 2: Investigación y Experimentación Guiada</h1>
+      <h2 class="text-lg font-semibold text-slate-700 dark:text-slate-200 mt-6 mb-2">Mi PC a mi manera</h2>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        La idea está basada en una necesidad real ya que uno de los miembros del grupo hace servicio técnico de computadoras, notebooks, impresoras, redes, etc. Detallamos el procedimiento técnico realizado para la construcción de una distribución GNU/Linux en formato "Live USB". Todo el proceso desde el ensamblaje hasta la compilación de la imagen ISO final.
+      </p>
+
+      <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mt-4 mb-2">Fase 1: Preparación del Entorno de Laboratorio</h3>
+      <ul class="list-disc pl-5 text-slate-600 dark:text-slate-300 mb-4 space-y-1">
+        <li><strong>1 - virtualHost y Virtualización:</strong> Desde el equipo anfitrión corriendo Windows 10, se configuró el software Oracle VM VirtualBox.</li>
+        <li><strong>2 - Configuración de la Máquina Virtual:</strong> Se creó una VM tipo "Debian (64-bit)" asignándole 4 GB de memoria RAM, 2 núcleos de procesamiento y un disco duro virtual de asignación dinámica de 35 GB (espacio necesario para compilar la ISO posteriormente).</li>
+        <li><strong>3 - Instalación Base:</strong> Se descargó la imagen ISO oficial de Linux Mint 22.3 Cinnamon Edition. Se montó en la VM y se realizó la instalación completa del sistema operativo en el disco virtual.</li>
       </ul>
-      <img src="images/virtual_memory.png" class="max-w-full h-auto rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 mx-auto" alt="Diagrama de Memoria Virtual y Traducción de Direcciones" />
-      <h2>Algoritmos de Reemplazo de Páginas</h2>
-      <p>Cuando ocurre un fallo de página y no hay marcos libres, el sistema operativo debe elegir una página víctima para desalojar:</p>
-      <ul>
-        <li><strong>FIFO (First-In, First-Out):</strong> Desaloja la página más antigua. Sufre de la anomalía de Belady.</li>
-        <li><strong>LRU (Least Recently Used):</strong> Desaloja la página que no ha sido usada por más tiempo. Excelente rendimiento pero requiere soporte de hardware para ser eficiente.</li>
-        <li><strong>Óptimo (OPT):</strong> Desaloja la página que tardará más tiempo en volver a usarse. Es inalcanzable en la práctica, sirve como referencia de comparación.</li>
-      </ul>
-      <div class="relative w-full aspect-video my-4 rounded-lg overflow-hidden shadow-md">
-        <iframe class="absolute top-0 left-0 w-full h-full border-0 aspect-video" src="https://www.youtube.com/embed/YpTMc_H3QoA" allowfullscreen></iframe>
+      <div class="my-4 flex justify-center">
+        <img src="images/consigna_2_a.png" alt="Preparación del Entorno" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto">
       </div>
-    `
-  },
-  "/Documentos/Resolución de Parcial/Ejercicio 3 - Sistemas de Archivos.html": {
-    type: "file",
-    name: "Ejercicio 3 - Sistemas de Archivos.html",
-    content: `
-      <h1>Ejercicio 3: Sistemas de Archivos</h1>
-      <p>El sistema de archivos es la estructura subyacente que utiliza el sistema operativo para organizar, almacenar, nombrar y recuperar archivos en dispositivos de almacenamiento secundario de forma eficiente y segura.</p>
-      <h2>Estructuras Basadas en Inodos (Ej: Ext4)</h2>
-      <p>En sistemas tipo Unix, un archivo está representado por un <strong>inodo (nodo de índice)</strong>, que es una estructura de datos que almacena metadatos y punteros a bloques de datos:</p>
-      <ul>
-        <li><strong>Metadatos:</strong> Permisos, propietario, tamaño del archivo, marcas de tiempo de acceso, modificación y creación.</li>
-        <li><strong>Punteros Directos:</strong> Direcciones que apuntan directamente a los primeros bloques de datos del archivo (rápido acceso para archivos pequeños).</li>
-        <li><strong>Punteros Indirectos:</strong> Direcciones que apuntan a bloques de punteros adicionales (simples, dobles o triples), permitiendo el almacenamiento de archivos extremadamente grandes.</li>
+
+      <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mt-6 mb-2">Fase 2: Actualización e Inyección de Software Especializado</h3>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        Una vez instalado el sistema operativo base, se procedió a actualizar los repositorios e instalar las herramientas orientadas al diagnóstico de hardware, redes y recuperación de sistemas Windows.
+        Desde la terminal (CLI), se actualizaron las listas de paquetes y el sistema base. Se ejecutó una instalación masiva utilizando el gestor apt para integrar utilidades fundamentales como: chntpw (reseteo SAM Windows), testdisk (recuperación de particiones), gsmartcontrol y gnome-disk-utility (salud S.M.A.R.T.), clamav/clamtk (antivirus), gddrescue/safecopy (clonación física), entre otras utilidades de red y ofimática ligera.
+      </p>
+      <pre class="bg-slate-100 dark:bg-slate-950 p-3 rounded text-xs overflow-x-auto border border-slate-200 dark:border-slate-800 text-mint font-mono mb-4">sudo apt install gdisk parted dosfstools exfatprogs hdparm extundelete foremost safecopy clonezilla wimtools rkhunter chkrootkit nmap wireshark iperf3 ethtool net-tools traceroute mtr curl wget lshw hwinfo dmidecode lmsensors stress-ng memtest86+ cpu-x mc ranger p7zip-full unrar remmina openssh-client terminator gnome-disk-utility -y</pre>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        Hardinfo, RustDesktop (soporte remoto), ClamAV (antivirus), Wireshark (redes), CPU-X y QdiskInfo (información de sistema y disco), DoubleCommander (explorador doble panel) y Arduino IDE.
+      </p>
+
+      <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mt-6 mb-2">Fase 3: Personalización del Entorno Gráfico (UI/UX)</h3>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        Se adaptó el entorno Cinnamon para ofrecer una experiencia familiar a los técnicos acostumbrados a sistemas operativos de Microsoft y reflejar la identidad institucional de SSCOM Informática.
+      </p>
+      <ul class="list-disc pl-5 text-slate-600 dark:text-slate-300 mb-4 space-y-1">
+        <li><strong>Fondo de Escritorio:</strong> Se importó y estableció una imagen alusiva a Linux y servicio técnico.</li>
+        <li><strong>Panel de Tareas y estructura del menú:</strong> Se descargó el tema de Windows 10 y se aplicaron los estilos.</li>
+        <li><strong>Personalización de categorías por función:</strong> Discos y Recuperación, Recuperación de Datos y Clonación, Herramientas de sistema, Internet, Seguridad, Programación, Otras.</li>
+        <li><strong>Ícono de inicio:</strong> Bajamos un ícono similar al del inicio de Windows.</li>
       </ul>
-      <img src="images/file_system.png" class="max-w-full h-auto rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 mx-auto" alt="Diagrama de Estructura de un Inodo" />
-      <h2>Métodos de Asignación de Espacio</h2>
-      <ul>
-        <li><strong>Asignación Contigua:</strong> Cada archivo ocupa un conjunto de bloques contiguos en el disco. Rápido acceso secuencial, pero sufre fragmentación externa.</li>
-        <li><strong>Asignación Enlazada:</strong> Cada archivo es una lista enlazada de bloques de disco. Resuelve fragmentación externa pero el acceso aleatorio es lento.</li>
-        <li><strong>Asignación Indexada:</strong> Reúne todos los punteros en un bloque de índice. Admite acceso aleatorio rápido sin fragmentación externa.</li>
-      </ul>
-      <div class="relative w-full aspect-video my-4 rounded-lg overflow-hidden shadow-md">
-        <iframe class="absolute top-0 left-0 w-full h-full border-0 aspect-video" src="https://www.youtube.com/embed/YpTMc_H3QoA" allowfullscreen></iframe>
+      <div class="my-4 flex justify-center">
+        <img src="images/consigna_2_b.png" alt="Personalización Gráfica" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto">
       </div>
-    `
-  },
-  "/Documentos/Resolución de Parcial/Ejercicio 4 - Concurrencia y Semáforos.html": {
-    type: "file",
-    name: "Ejercicio 4 - Concurrencia y Semáforos.html",
-    content: `
-      <h1>Ejercicio 4: Concurrencia y Semáforos</h1>
-      <p>La ejecución de múltiples procesos o hilos cooperativos que comparten memoria puede dar lugar a <strong>condiciones de carrera (race conditions)</strong>, donde el resultado final depende del orden relativo de ejecución. Para evitar esto, se requiere sincronización.</p>
-      <h2>Semáforos de Dijkstra</h2>
-      <p>Un semáforo es una variable entera especial a la que solo se puede acceder mediante dos operaciones atómicas estándar:</p>
-      <ul>
-        <li><strong>P(S) o wait(S):</strong> Decrementa el valor del semáforo. Si el valor es negativo, el proceso se bloquea y entra en la cola del semáforo.</li>
-        <li><strong>V(S) o signal(S):</strong> Incrementa el valor del semáforo. Si hay procesos bloqueados en la cola, despierta a uno de ellos.</li>
-      </ul>
-      <img src="images/concurrency_semaphores.png" class="max-w-full h-auto rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 mx-auto" alt="Diagrama de exclusión mutua mediante Semáforo" />
-      <h2>Problemas Clásicos de Sincronización</h2>
-      <ol>
-        <li><strong>Productor-Consumidor (Bounded Buffer):</strong> Un conjunto de productores coloca elementos en un buffer de tamaño limitado, y los consumidores los retiran. Se usan semáforos para evitar sobrellenar o vaciar el buffer indebidamente.</li>
-        <li><strong>Lectores-Escritores:</strong> Múltiples lectores pueden leer concurrentemente, pero solo un escritor puede acceder a la vez de forma exclusiva.</li>
-        <li><strong>Cena de los Filósofos:</strong> Ilustra el problema de la asignación de recursos compartidos sin interbloqueos (deadlock) ni inanición (starvation).</li>
+
+      <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mt-6 mb-2">Fase 4: Remasterización y Generación de la Imagen ISO</h3>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        Una vez configurado el entorno visual y el catálogo de software, se procede a congelar el sistema en una imagen ISO distribuible.
+      </p>
+      <ol class="list-decimal pl-5 text-slate-600 dark:text-slate-300 mb-4 space-y-2">
+        <li><strong>Limpieza del Almacenamiento:</strong> Ejecutar la depuración del caché de paquetes para reducir el peso de la imagen final:<br><code class="bg-slate-100 dark:bg-slate-950 px-1.5 py-0.5 rounded font-mono text-xs border border-slate-200 dark:border-slate-800">sudo apt clean</code>. Vaciar la papelera de reciclaje y eliminar archivos residuales en el directorio de descargas.</li>
+        <li><strong>Instalación del Framework de Remasterización:</strong> Clonar o instalar la herramienta de compilación eggs (Penguin's Eggs) asegurando la carga de sus dependencias del sistema.</li>
+        <li><strong>Compilación en Modo Clon:</strong> Es mandatorio ejecutar la compilación utilizando el flag de clonación de usuario. Esto garantiza que los archivos de configuración local (los temas visuales, el papel tapiz seleccionado, los accesos directos de las aplicaciones y las categorías de menú personalizadas) se incorporen dentro del sistema de archivos comprimido que se montará al arrancar el Live USB:<br>
+        <pre class="bg-slate-100 dark:bg-slate-950 p-2.5 rounded text-xs border border-slate-200 dark:border-slate-800 text-mint font-mono mt-2">sudo eggs produce --clone</pre></li>
+        <li><strong>Ubicación del Resultado:</strong> Al finalizar el proceso de compresión de bloques, la herramienta almacenará la imagen ISO generada (ej. SO2.iso) en la ruta protegida del sistema: <code class="bg-slate-100 dark:bg-slate-950 px-1.5 py-0.5 rounded font-mono text-xs border border-slate-200 dark:border-slate-800">/home/eggs/</code>.</li>
       </ol>
-      <div class="relative w-full aspect-video my-4 rounded-lg overflow-hidden shadow-md">
-        <iframe class="absolute top-0 left-0 w-full h-full border-0 aspect-video" src="https://www.youtube.com/embed/YpTMc_H3QoA" allowfullscreen></iframe>
+
+      <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mt-6 mb-2">Fase 5: Preparación de la Unidad USB y Estructura de Persistencia</h3>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        La última etapa traslada la ISO a la unidad física y configura el backend que recibirá los datos en los ciclos de trabajo reales.
+      </p>
+      <ul class="list-disc pl-5 text-slate-600 dark:text-slate-300 mb-4 space-y-3">
+        <li><strong>1. Instalación de Ventoy:</strong> Utilizar la herramienta Ventoy (vía interfaz gráfica en Linux o Windows) para formatear la unidad USB física, dividiéndola automáticamente en su estructura de arranque oculta y su partición principal de datos.
+        <div class="my-2 flex justify-center"><img src="images/consigna_2_c.png" alt="Instalación de Ventoy" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-xs h-auto"></div></li>
+        <li><strong>2. Transferencia de la ISO:</strong> Copiar el archivo de la imagen ISO generada (ej. SO2.iso) directamente en la raíz de la partición principal de datos de la unidad USB.
+        <div class="my-2 flex justify-center"><img src="images/consigna_2_d.png" alt="Transferencia ISO" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-xs h-auto"></div></li>
+        <li><strong>3. Configuración del Bloque de Persistencia:</strong> Dado que el entorno generado por Penguin's Eggs corre bajo el script de inicialización live-boot de Debian, se debe proveer un bloque compatible:
+          <ul class="list-circle pl-5 mt-1 space-y-1">
+            <li>Descargar un contenedor de persistencia formateado en EXT4 provisto por el backend de Ventoy, asegurando que su nombre contenga el sufijo correspondiente a la arquitectura de Debian, por ejemplo: <code class="bg-slate-100 dark:bg-slate-950 px-1 py-0.5 rounded font-mono text-xs border border-slate-200 dark:border-slate-800">persistence_ext4_2GB_persistence.dat</code>.</li>
+            <li>Mover este archivo de almacenamiento masivo virtual a la raíz de la unidad USB (junto a la imagen ISO).</li>
+          </ul>
+          <div class="my-2 flex justify-center"><img src="images/consigna_2_e.png" alt="Bloque de Persistencia" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-xs h-auto"></div>
+        </li>
+        <li><strong>4. Vinculación mediante Descriptor JSON:</strong> En la raíz de la unidad USB, crear una carpeta llamada exactamente <code class="bg-slate-100 dark:bg-slate-950 px-1 py-0.5 rounded font-mono text-xs border border-slate-200 dark:border-slate-800">ventoy</code>. Dentro de ella, estructurar un archivo de texto plano denominado <code class="bg-slate-100 dark:bg-slate-950 px-1 py-0.5 rounded font-mono text-xs border border-slate-200 dark:border-slate-800">ventoy.json</code> que asocie la ISO con su persistencia.
+        <div class="my-2 flex justify-center"><img src="images/consigna_2_f.png" alt="Estructura JSON" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-xs h-auto"></div></li>
+      </ul>
+
+      <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mt-6 mb-2">Fase 6: Procedimiento de Arranque en Producción</h3>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        Para ejecutar el entorno conservando la persistencia de datos (por ejemplo, para guardar un proyecto de desarrollo en Visual Studio Code o bases de datos locales):
+      </p>
+      <ol class="list-decimal pl-5 text-slate-600 dark:text-slate-300 mb-4 space-y-3">
+        <li>Conectar la unidad USB a la computadora de destino e inicializar el sistema accediendo al menú de arranque de la BIOS/UEFI.</li>
+        <li>En el menú gráfico de Ventoy, seleccionar la imagen SO2.iso.
+        <div class="my-2 flex justify-center"><img src="images/consigna_2_g.png" alt="Ventoy Menu" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-xs h-auto"></div></li>
+        <li>En el submenú inmediato desplegado por Ventoy, seleccionar la opción "Boot with /persistence_ext4_2GB_persistence.dat".
+        <div class="my-2 flex justify-center"><img src="images/consigna_2_h.png" alt="Ventoy Boot Mode" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-xs h-auto"></div></li>
+        <li>Al cargar la pantalla de GRUB de Penguin's Eggs, posicionarse sobre la primera opción de arranque, presionar la tecla TAB para editar los parámetros del kernel en tiempo de ejecución, añadir la instrucción de montaje al final de la línea dejando un espacio: <code class="bg-slate-100 dark:bg-slate-950 px-1 py-0.5 rounded font-mono text-xs border border-slate-200 dark:border-slate-800">persistence</code> y presionar Enter para iniciar la sesión de forma persistente.
+        <div class="my-2 flex justify-center"><img src="images/consigna_2_i.png" alt="GRUB edit" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-xs h-auto"></div>
+        <div class="my-2 flex justify-center"><img src="images/consigna_2_j.png" alt="GRUB boot" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-xs h-auto"></div></li>
+        <li>El entorno se cargará de forma normal y podemos verificar el funcionamiento.
+        <div class="my-2 flex justify-center"><img src="images/consigna_2_k.png" alt="Home Live" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-xs h-auto"></div></li>
+        <li>Al cambiar el fondo de pantalla, crear carpetas o conectarnos a internet, todo se almacenará en la persistencia y estará disponible en el próximo inicio.
+        <div class="my-2 flex justify-center"><img src="images/consigna_2_l.png" alt="Persistence verified" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-xs h-auto"></div></li>
+      </ol>
+      <p class="text-slate-600 dark:text-slate-300 font-semibold mt-4">
+        Logramos así crear un sistema operativo portable y personalizable con persistencia en producción.
+      </p>
+    `
+  },
+  "/Documentos/Resolución de Parcial/Parte 3 - Linux para diferentes personas.html": {
+    type: "file",
+    name: "Parte 3 - Linux para diferentes personas.html",
+    content: `
+      <h1 class="text-2xl font-bold text-slate-800 dark:text-white mb-4">Consigna 3: Linux para Diferentes Personas</h1>
+
+      <h2 class="text-xl font-bold text-slate-700 dark:text-slate-200 mt-6 mb-2">3.1 – Perfil Desarrollador de Software: Fedora Workstation</h2>
+      <div class="my-4 flex justify-center">
+        <img src="images/consgina_3_a.png" alt="Perfil Desarrollador" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto">
+      </div>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        Para el perfil de un Desarrollador de Software, considero una de las mejores opciones a <strong>Fedora Workstation</strong>, una distribución de Linux respaldada por Red Hat.
+        Algunas de las razones clave de esta elección son:
+      </p>
+      <ul class="list-disc pl-5 text-slate-600 dark:text-slate-300 mb-4 space-y-2">
+        <li><strong>Ecosistema empresarial:</strong> Permite familiarizarse con tecnologías de Red Hat, muy demandadas en infraestructuras y servidores de entornos corporativos a gran escala.</li>
+        <li><strong>Soporte nativo para lenguajes:</strong> Facilidad de uso para programar en Java, Python, Node.js, PHP, Go, Ruby, C/C++, etc.</li>
+        <li><strong>Herramientas y editores:</strong> Integración fluida de IDEs y editores de código populares (JetBrains, VS Code, Sublime Text), así como editores clásicos en la terminal (Vim/Neovim, Nano).</li>
+        <li><strong>Base de Datos y Contenedores:</strong> Entornos robustos para bases de datos relacionales y no relacionales (PostgreSQL, SQLite, MongoDB) y contenedores mediante Docker.</li>
+        <li><strong>Virtualización avanzada nativa:</strong> Permite virtualizar usando tecnologías nativas del kernel como KVM y QEMU sin necesidad de software de terceros como VirtualBox.</li>
+        <li><strong>Gestión de paquetes limpia:</strong> Utilización del gestor de paquetes DNF, ágil y moderno, complementado con Flatpak (Flathub) para un despliegue de aplicaciones seguro y universal.</li>
+      </ul>
+
+      <div class="my-4 flex justify-center">
+        <img src="images/consgina_3_b.png" alt="Fedora Home" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto">
+        <img src="images/consgina_3_c.png" alt="Fedora Apps" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto ml-4">
+      </div>
+
+      <h4 class="text-sm font-bold text-slate-800 dark:text-slate-200 mt-4 mb-1">Comunidad y Soporte:</h4>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        Fedora cuenta con una comunidad enorme y foros dedicados. Podés ver más en el foro de discusión: 
+        <a href="https://discussion.fedoraproject.org/" target="_blank" class="text-mint hover:underline font-medium">Foro Oficial de Fedora</a>.
+      </p>
+
+      <h2 class="text-xl font-bold text-slate-700 dark:text-slate-200 mt-8 mb-2">3.2 Perfil Familia y Estudiantes</h2>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        Para un entorno enfocado en el aprendizaje escolar y familiar, recomendamos una serie de herramientas integradas de código abierto:
+      </p>
+
+      <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mt-4 mb-2">OnlyOffice</h3>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        Una excelente alternativa a Microsoft Office. Esta suite ofimática permite crear y modificar documentos de texto, hojas de cálculo y presentaciones con total compatibilidad de formatos (.docx, .xlsx, .pptx, .pdf). Además, integra asistentes virtuales modernos basados en Inteligencia Artificial y es de código abierto.
+      </p>
+      <div class="my-4 flex justify-center">
+        <img src="images/consgina_3_d.png" alt="OnlyOffice" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto">
+      </div>
+
+      <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mt-6 mb-2">TuxMath (Educación infantil)</h3>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        Juego arcade educativo de matemáticas básicas protagonizado por Tux, la mascota de Linux. Basado en mecánicas de defensa (estilo Missile Command), los niños deben resolver operaciones matemáticas sencillas antes de que los meteoritos destruyan sus ciudades/iglús.
+      </p>
+      <div class="my-4 flex justify-center">
+        <img src="images/consgina_3_e.png" alt="TuxMath" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto">
+      </div>
+
+      <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mt-6 mb-2">OpenShot (Edición de video sencilla)</h3>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        Editor de video multiplataforma, gratuito y muy intuitivo. Es ideal para que los estudiantes editen videos escolares usando transiciones rápidas, recorte de clips, audio multicanal y títulos animados en 3D en pocos pasos.
+      </p>
+      <div class="my-4 flex justify-center">
+        <img src="images/consgina_3_f.png" alt="OpenShot" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto">
+      </div>
+
+      <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mt-6 mb-2">Tutorial: Instalación de aplicaciones vía Flatpak (Anki)</h3>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        <strong>Anki</strong> es una app de memorización basada en flashcards (tarjetas de memoria digitales) con repetición espaciada y recuerdo activo.
+      </p>
+      <ol class="list-decimal pl-5 text-slate-600 dark:text-slate-300 mb-4 space-y-3">
+        <li>Búsqueda de la aplicación en la terminal:<br>
+          <code class="bg-slate-100 dark:bg-slate-950 px-2 py-1 rounded font-mono text-xs border border-slate-200 dark:border-slate-800">flatpak search anki</code>
+          <div class="my-2 flex justify-center"><img src="images/consgina_3_g.png" alt="Flatpak search" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto"></div>
+        </li>
+        <li>Instalación del paquete estable desde Flathub:<br>
+          <code class="bg-slate-100 dark:bg-slate-950 px-2 py-1 rounded font-mono text-xs border border-slate-200 dark:border-slate-800">flatpak install flathub net.ankiweb.Anki</code>
+          <div class="my-2 flex justify-center"><img src="images/consgina_3_h.png" alt="Flatpak install" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto"></div>
+          <div class="my-2 flex justify-center"><img src="images/consgina_3_i.png" alt="Flatpak confirmation" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto"></div>
+        </li>
+        <li>Esperamos la descarga e instalación:<br>
+          <div class="my-2 flex justify-center"><img src="images/consgina_3_j.png" alt="Flatpak progress" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto"></div>
+        </li>
+        <li>Mensaje de instalación exitosa:<br>
+          <div class="my-2 flex justify-center"><img src="images/consgina_3_k.png" alt="Flatpak complete" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto"></div>
+        </li>
+        <li>Verificar las aplicaciones instaladas:<br>
+          <code class="bg-slate-100 dark:bg-slate-950 px-2 py-1 rounded font-mono text-xs border border-slate-200 dark:border-slate-800">flatpak list</code>
+          <div class="my-2 flex justify-center"><img src="images/consgina_3_l.png" alt="Flatpak list" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto"></div>
+        </li>
+      </ol>
+
+      <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mt-6 mb-2">Ventajas del Software Libre para la Familia</h3>
+      <ul class="list-disc pl-5 text-slate-600 dark:text-slate-300 mb-4 space-y-1">
+        <li>Independencia y ahorro al evitar pagar licencias costosas y restrictivas de software comercial.</li>
+        <li>Excelente rendimiento en computadoras de bajos recursos, prolongando la vida útil del hardware familiar.</li>
+        <li>Seguridad, transparencia y protección de la privacidad al evitar el rastreo oculto de telemetría propio de Windows.</li>
+      </ul>
+    `
+  },
+  "/Documentos/Resolución de Parcial/Parte 4 - Linux, el motor de la IA.html": {
+    type: "file",
+    name: "Parte 4 - Linux, el motor de la IA.html",
+    content: `
+      <h1 class="text-2xl font-bold text-slate-800 dark:text-white mb-4">Consigna 4: Linux, el Motor de la Inteligencia Artificial</h1>
+      <h2 class="text-lg font-semibold text-slate-700 dark:text-slate-200 mt-6 mb-4">Bibliografía de Referencia</h2>
+      <div class="space-y-4">
+        <div class="p-3 bg-slate-50 dark:bg-slate-950/40 rounded border border-slate-200 dark:border-slate-800">
+          <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200">Linux Mint Project</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Proyecto oficial, repositorios y documentación del entorno de escritorio Cinnamon.</p>
+          <a href="https://linuxmint.com/" target="_blank" class="text-xs text-mint hover:underline font-mono mt-1 inline-block">https://linuxmint.com/</a>
+        </div>
+
+        <div class="p-3 bg-slate-50 dark:bg-slate-950/40 rounded border border-slate-200 dark:border-slate-800">
+          <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200">Oracle VM VirtualBox</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Manual de usuario, gestión de almacenamiento virtual e integración de utilidades (Guest Additions).</p>
+          <a href="https://www.virtualbox.org/manual/" target="_blank" class="text-xs text-mint hover:underline font-mono mt-1 inline-block">https://www.virtualbox.org/manual/</a>
+        </div>
+
+        <div class="p-3 bg-slate-50 dark:bg-slate-950/40 rounded border border-slate-200 dark:border-slate-800">
+          <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200">Penguin's Eggs</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Repositorio oficial de Piero Proietti, documentación del CLI y empaquetamiento de sistemas (parámetro --clone).</p>
+          <a href="https://github.com/pieroproietti/penguins-eggs" target="_blank" class="text-xs text-mint hover:underline font-mono mt-1 inline-block">https://github.com/pieroproietti/penguins-eggs</a>
+        </div>
+
+        <div class="p-3 bg-slate-50 dark:bg-slate-950/40 rounded border border-slate-200 dark:border-slate-800">
+          <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200">Ventoy Persistence</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Documentación oficial del gestor de arranque multiboot y especificaciones técnicas del plugin de persistencia (estructuras JSON).</p>
+          <a href="https://www.ventoy.net/en/plugin_persistence.html" target="_blank" class="text-xs text-mint hover:underline font-mono mt-1 inline-block">https://www.ventoy.net/en/plugin_persistence.html</a>
+        </div>
+
+        <div class="p-3 bg-slate-50 dark:bg-slate-950/40 rounded border border-slate-200 dark:border-slate-800">
+          <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200">Debian live-boot</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Manual técnico (manpage) sobre los parámetros del kernel y la sintaxis de persistencia para entornos remasterizados.</p>
+          <a href="https://manpages.debian.org/testing/live-boot-doc/live-boot.7.en.html" target="_blank" class="text-xs text-mint hover:underline font-mono mt-1 inline-block">https://manpages.debian.org/testing/live-boot-doc/live-boot.7.en.html</a>
+        </div>
+
+        <div class="p-3 bg-slate-50 dark:bg-slate-950/40 rounded border border-slate-200 dark:border-slate-800">
+          <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200">GParted (GNOME Partition Editor)</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Documentación oficial sobre gestión de particiones y sistemas de archivos.</p>
+          <a href="https://gparted.org/" target="_blank" class="text-xs text-mint hover:underline font-mono mt-1 inline-block">https://gparted.org/</a>
+        </div>
+
+        <div class="p-3 bg-slate-50 dark:bg-slate-950/40 rounded border border-slate-200 dark:border-slate-800">
+          <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200">chntpw & TestDisk</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Recuperación de particiones, manipulación de archivos SAM y herramientas de diagnóstico físico.</p>
+          <a href="https://www.cgsecurity.org/" target="_blank" class="text-xs text-mint hover:underline font-mono mt-1 inline-block">https://www.cgsecurity.org/</a>
+        </div>
+
+        <div class="p-3 bg-slate-50 dark:bg-slate-950/40 rounded border border-slate-200 dark:border-slate-800">
+          <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200">Wireshark & Nmap</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Análisis de protocolos de red, tráfico de paquetes a bajo nivel y descubrimiento de puertos abiertos.</p>
+          <a href="https://www.wireshark.org/" target="_blank" class="text-xs text-mint hover:underline font-mono mt-1 inline-block">https://www.wireshark.org/</a>
+        </div>
       </div>
     `
   },
-  "/Documentos/Resolución de Parcial/Ejercicio 5 - Entrada y Salida.html": {
+  "/Documentos/Resolución de Parcial/Parte 5 - Conclusión grupal.html": {
     type: "file",
-    name: "Ejercicio 5 - Entrada y Salida.html",
+    name: "Parte 5 - Conclusión grupal.html",
     content: `
-      <h1>Ejercicio 5: Entrada y Salida (E/S)</h1>
-      <p>El subsistema de Entrada/Salida es responsable de comunicar el procesador y la memoria con los periféricos externos, abstrayendo al programador de los detalles de hardware de cada dispositivo específico.</p>
-      <h2>Técnicas de Operación de E/S</h2>
-      <ul>
-        <li><strong>E/S Programada (Polling):</strong> La CPU monitorea continuamente el estado del controlador del dispositivo en un bucle activo. Consume ciclos valiosos de CPU.</li>
-        <li><strong>E/S por Interrupciones:</strong> El controlador del dispositivo interrumpe a la CPU cuando tiene datos listos o finalizó su tarea, evitando la espera activa.</li>
-        <li><strong>Acceso Directo a Memoria (DMA):</strong> Un controlador especial transfiere bloques enteros de datos entre el dispositivo de E/S y la memoria RAM sin intervención constante de la CPU.</li>
-      </ul>
-      <img src="images/io_subsystem.png" class="max-w-full h-auto rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 mx-auto" alt="Diagrama de Planificación de Lectura en Disco" />
-      <h2>Algoritmos de Planificación de Disco (Búsqueda)</h2>
-      <p>Los algoritmos determinan el orden en el que se atienden las solicitudes de lectura/escritura pendientes del disco para minimizar el movimiento del brazo magnético:</p>
-      <ul>
-        <li><strong>SSTF (Shortest Seek Time First):</strong> Selecciona la solicitud más cercana a la posición actual del cabezal. Reduce el tiempo de búsqueda pero puede causar inanición de pistas lejanas.</li>
-        <li><strong>SCAN (Algoritmo del Ascensor):</strong> El brazo se desplaza de un extremo a otro atendiendo solicitudes, y al llegar al final invierte la dirección.</li>
-        <li><strong>C-SCAN (Circular SCAN):</strong> Se mueve en una dirección atendiendo peticiones y al llegar al extremo retorna al inicio inmediatamente sin atender peticiones de regreso. Proporciona un tiempo de espera más uniforme.</li>
-      </ul>
-      <div class="relative w-full aspect-video my-4 rounded-lg overflow-hidden shadow-md">
-        <iframe class="absolute top-0 left-0 w-full h-full border-0 aspect-video" src="https://www.youtube.com/embed/YpTMc_H3QoA" allowfullscreen></iframe>
+      <h1 class="text-2xl font-bold text-slate-800 dark:text-white mb-4">Consigna 5: Conclusión Grupal</h1>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        En este proyecto pusimos en práctica los conceptos de arquitectura de sistemas operativos, modularización de código gráfico y gestión de recursos integrando datos de servicio técnico real en un simulador visual premium.
+      </p>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        A continuación, presentamos un video introductorio y explicativo sobre las bases de la Inteligencia Artificial y el futuro de los sistemas de automatización inteligente:
+      </p>
+      <div class="my-6 aspect-video rounded-lg overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800">
+        <iframe class="w-full h-full" src="https://www.youtube.com/embed/ad79nYk2kEg" title="Introduction to AI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
+      <p class="text-slate-600 dark:text-slate-300">
+        ¡Gracias por explorar nuestra resolución del parcial de Sistemas Operativos 2!
+      </p>
     `
   },
   "/Documentos/Trabajo Escrito (Google Docs).url": {
@@ -191,7 +368,7 @@ Este simulador representa un entorno de escritorio Cinnamon basado en la distrib
 
 ¡Explorá las carpetas, usá la terminal y configurá el entorno a tu gusto!
 
-Integrantes del grupo: Manuel Saquilán, Leandro Fernández Fernández, Franco Caraballo y Maxi.`
+Integrantes del grupo: Manuel Saquilán, Leandro Fernández, Franco Caraballo y Maxi Oria.`
   },
   "/Documentos/conclusion_grupal.txt": {
     type: "file",
@@ -236,11 +413,11 @@ Entender el funcionamiento interno de Linux, su robustez gracias al software lib
     name: "Integrantes",
     children: ["Maxi Oria", "Manuel Saquilán", "Leandro Fernández", "Franco Caraballo"]
   },
-  "/Integrantes/Maxi": {
+  "/Integrantes/Maxi Oria": {
     type: "file",
-    name: "Maxi",
+    name: "Maxi Oria",
     isUnopenable: true,
-    content: `Nombre: Maxi
+    content: `Nombre: Maxi Oria
 Rol: Líder de Proyecto e Ingeniero de Sistemas
 Especialidad: Personalización del Kernel de Linux y Planificación de Procesos
 Frase: "Si no puede ejecutarse en espacio de usuario, optimizalo en espacio de kernel."`
@@ -254,11 +431,11 @@ Rol: Arquitecto Frontend Principal
 Especialidad: Gestión de Estado, Rendimiento de Interfaz y Diseño Atómico
 Frase: "El código limpio no es un lujo; es la base de todo proyecto estable."`
   },
-  "/Integrantes/Leandro Fernández Fernández": {
+  "/Integrantes/Leandro Fernández": {
     type: "file",
-    name: "Leandro Fernández Fernández",
+    name: "Leandro Fernández",
     isUnopenable: true,
-    content: `Nombre: Leandro Fernández Fernández
+    content: `Nombre: Leandro Fernández
 Rol: Desarrollador Principal de Sistemas
 Especialidad: Sistemas de Archivos y Control de Concurrencia
 Frase: "La sincronización de hilos es lo que mantiene ordenado al caos."`

@@ -41,8 +41,8 @@ export class WindowManager {
       initialHeight = window.innerHeight - 48; // Excluding bottom panel
     } else {
       const panelHeight = 48;
-      initialX = Math.max(0, (window.innerWidth - initialWidth) / 2) + offset;
-      initialY = Math.max(0, (window.innerHeight - initialHeight - panelHeight) / 2) + offset;
+      initialX = Math.max(0, ((window.innerWidth - initialWidth) / 2) - offset);
+      initialY = Math.max(0, ((window.innerHeight - initialHeight - panelHeight) / 2) + offset);
     }
 
     // Set position

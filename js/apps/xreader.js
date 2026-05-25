@@ -23,15 +23,15 @@ export function initXreaderApp(container, winInstance, initData) {
   const sheetContainer = container.querySelector('.xreader-page-sheet-container');
 
   let zoom = 1.0;
-  let activePath = initData && initData.filePath ? initData.filePath : '/Documentos/Resolución de Parcial/Ejercicio 1 - Planificación de Procesos.html';
+  let activePath = initData && initData.filePath ? initData.filePath : '/Documentos/Resolución de Parcial/Parte 1 - Instalacion Virtual Box y Linux Mint.html';
   let sidebarOpen = true;
 
   const exercises = [
-    "/Documentos/Resolución de Parcial/Ejercicio 1 - Planificación de Procesos.html",
-    "/Documentos/Resolución de Parcial/Ejercicio 2 - Memoria Virtual.html",
-    "/Documentos/Resolución de Parcial/Ejercicio 3 - Sistemas de Archivos.html",
-    "/Documentos/Resolución de Parcial/Ejercicio 4 - Concurrencia y Semáforos.html",
-    "/Documentos/Resolución de Parcial/Ejercicio 5 - Entrada y Salida.html"
+    "/Documentos/Resolución de Parcial/Parte 1 - Instalacion Virtual Box y Linux Mint.html",
+    "/Documentos/Resolución de Parcial/Parte 2 - Investigacion y Experimentacion.html",
+    "/Documentos/Resolución de Parcial/Parte 3 - Linux para diferentes personas.html",
+    "/Documentos/Resolución de Parcial/Parte 4 - Linux, el motor de la IA.html",
+    "/Documentos/Resolución de Parcial/Parte 5 - Conclusión grupal.html"
   ];
 
   // Render Sidebar index links

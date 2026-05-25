@@ -113,8 +113,8 @@ export function runDiagnosticTests() {
 
       windows.forEach((win, index) => {
         const offset = index * window.wm.winCascadeOffset;
-        const expectedX = Math.max(0, (window.innerWidth - defaultWidth) / 2) + offset;
-        const expectedY = Math.max(0, (window.innerHeight - defaultHeight - panelHeight) / 2) + offset;
+        const expectedX = Math.max(0, ((window.innerWidth - defaultWidth) / 2) - offset);
+        const expectedY = Math.max(0, ((window.innerHeight - defaultHeight - panelHeight) / 2) + offset);
 
         const actualX = parseInt(win.node.style.left);
         const actualY = parseInt(win.node.style.top);
@@ -139,11 +139,11 @@ export function runDiagnosticTests() {
     if (!integrantesDir) {
       console.error("❌ Test 7: /Integrantes directory does not exist.");
     } else {
-      const expectedChildren = ["Maxi", "Manuel Saquilán", "Leandro Fernández Fernández", "Franco Caraballo"];
+      const expectedChildren = ["Maxi Oria", "Manuel Saquilán", "Leandro Fernández", "Franco Caraballo"];
       const actualChildren = integrantesDir.children;
       const matches = expectedChildren.every(c => actualChildren.includes(c)) && expectedChildren.length === actualChildren.length;
       if (!matches) {
-        console.error("❌ Test 7: /Integrantes children do not match expected Maxi, Manuel Saquilán, Leandro Fernández Fernández, Franco Caraballo.");
+        console.error("❌ Test 7: /Integrantes children do not match expected Maxi Oria, Manuel Saquilán, Leandro Fernández, Franco Caraballo.");
       } else {
         let allUnopenable = true;
         expectedChildren.forEach(member => {
@@ -209,7 +209,7 @@ export function runDiagnosticTests() {
       spawnedInitData = initData;
     };
 
-    const testPath = "/Documentos/Resolución de Parcial/Ejercicio 1 - Planificación de Procesos.html";
+    const testPath = "/Documentos/Resolución de Parcial/Parte 1 - Instalacion Virtual Box y Linux Mint.html";
     if (testPath.endsWith('.html')) {
       window.spawnApp('xreader', `Visor de Documentos (Xreader)`, { filePath: testPath });
     }
@@ -228,8 +228,11 @@ export function runDiagnosticTests() {
   // Test 10: Xreader Mobile Auto-Maximize and Sidebar Collapse (E2E Test)
   setTimeout(() => {
     try {
-      window.spawnApp('xreader', null, { filePath: "/Documentos/Resolución de Parcial/Ejercicio 1 - Planificación de Procesos.html" });
-      const xreaderWin = window.wm.windows.find(w => w.appId === 'xreader');
+      let xreaderWin = window.wm.windows.find(w => w.appId === 'xreader');
+      if (!xreaderWin) {
+        window.spawnApp('xreader', null, { filePath: "/Documentos/Resolución de Parcial/Parte 1 - Instalacion Virtual Box y Linux Mint.html" });
+        xreaderWin = window.wm.windows.find(w => w.appId === 'xreader');
+      }
 
       if (!xreaderWin) {
         console.error("❌ Test 10: Xreader window could not be spawned for testing.");
