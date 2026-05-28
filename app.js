@@ -47,7 +47,7 @@ Gracias a entornos de escritorio livianos (como MATE o XFCE) y un consumo de RAM
   "/Documentos": {
     type: "dir",
     name: "Documentos",
-    children: ["Bienvenida.txt", "conclusion_grupal.txt", "Trabajo Escrito (Google Docs).url", "Resolución de Parcial"]
+    children: ["Bienvenida.txt", "Trabajo Escrito (Google Docs).url", "Resolución de Parcial"]
   },
   "/Documentos/Resolución de Parcial": {
     type: "dir",
@@ -57,7 +57,8 @@ Gracias a entornos de escritorio livianos (como MATE o XFCE) y un consumo de RAM
       "Parte 2 - Investigacion y Experimentacion.html",
       "Parte 3 - Linux para diferentes personas.html",
       "Parte 4 - Linux, el motor de la IA.html",
-      "Parte 5 - Conclusión grupal.html"
+      "Parte 5 - Conclusión grupal.html",
+      "Bibliografía.html"
     ]
   },
   "/Documentos/Resolución de Parcial/Parte 1 - Instalacion Virtual Box y Linux Mint.html": {
@@ -239,9 +240,14 @@ Gracias a entornos de escritorio livianos (como MATE o XFCE) y un consumo de RAM
         <li><strong>Gestión de paquetes limpia:</strong> Utilización del gestor de paquetes DNF, ágil y moderno, complementado con Flatpak (Flathub) para un despliegue de aplicaciones seguro y universal.</li>
       </ul>
 
+      <h3 class="text-lg font-bold text-slate-700 dark:text-slate-200 mt-6 mb-2">Capturas de Home Fedora Workstation (desde Distrosea)</h3>
       <div class="my-4 flex justify-center">
         <img src="images/consgina_3_b.png" alt="Fedora Home" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto">
-        <img src="images/consgina_3_c.png" alt="Fedora Apps" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto ml-4">
+      </div>
+
+      <h3 class="text-lg font-bold text-slate-700 dark:text-slate-200 mt-6 mb-2">Capturas de apps Fedora Workstation (desde Distrosea)</h3>
+      <div class="my-4 flex justify-center">
+        <img src="images/consgina_3_c.png" alt="Fedora Apps" class="rounded-lg shadow border border-slate-200 dark:border-slate-800 max-w-full h-auto">
       </div>
 
       <h4 class="text-sm font-bold text-slate-800 dark:text-slate-200 mt-4 mb-1">Comunidad y Soporte:</h4>
@@ -318,55 +324,33 @@ Gracias a entornos de escritorio livianos (como MATE o XFCE) y un consumo de RAM
     name: "Parte 4 - Linux, el motor de la IA.html",
     content: `
       <h1 class="text-2xl font-bold text-slate-800 dark:text-white mb-4">Consigna 4: Linux, el Motor de la Inteligencia Artificial</h1>
-      <h2 class="text-lg font-semibold text-slate-700 dark:text-slate-200 mt-6 mb-4">Bibliografía de Referencia</h2>
-      <div class="space-y-4">
-        <div class="p-3 bg-slate-50 dark:bg-slate-950/40 rounded border border-slate-200 dark:border-slate-800">
-          <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200">Linux Mint Project</h3>
-          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Proyecto oficial, repositorios y documentación del entorno de escritorio Cinnamon.</p>
-          <a href="https://linuxmint.com/" target="_blank" class="text-xs text-mint hover:underline font-mono mt-1 inline-block">https://linuxmint.com/</a>
-        </div>
+      
+      <h2 class="text-lg font-semibold text-slate-700 dark:text-slate-200 mt-6 mb-2">4.1 — Por qué Linux domina la IA (dos razones técnicas)</h2>
+      
+      <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mt-4 mb-2">Drivers de GPU, CUDA y rendimiento:</h3>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        el entrenamiento de modelos de IA depende fuertemente de las placas de video NVIDIA. CUDA (la plataforma de NVIDIA para cálculo en GPU) y casi todas las librerías de aceleración por hardware están pensadas y optimizadas primero para Linux. Eso significa mejor soporte de drivers para cómputo, mejor aprovechamiento de la GPU y, en general, más rendimiento y estabilidad en tareas largas de entrenamiento que en otros sistemas.
+      </p>
 
-        <div class="p-3 bg-slate-50 dark:bg-slate-950/40 rounded border border-slate-200 dark:border-slate-800">
-          <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200">Oracle VM VirtualBox</h3>
-          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Manual de usuario, gestión de almacenamiento virtual e integración de utilidades (Guest Additions).</p>
-          <a href="https://www.virtualbox.org/manual/" target="_blank" class="text-xs text-mint hover:underline font-mono mt-1 inline-block">https://www.virtualbox.org/manual/</a>
-        </div>
+      <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mt-4 mb-2">Terminal, automatización y contenedores (Docker):</h3>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        Linux ofrece una terminal potentísima donde se instala, configura y ejecuta todo mediante comandos y scripts, lo que permite automatizar experimentos y reproducirlos. Sumado a eso, los contenedores como Docker —que nacieron y funcionan de forma nativa en Linux— permiten empaquetar todo el entorno (versiones de Python, librerías, dependencias) y que corra igual en cualquier máquina o servidor. Como casi todos los servidores, supercomputadoras y servicios en la nube donde realmente se entrena la IA usan Linux, desarrollar directamente en Linux evita problemas de compatibilidad al pasar del escritorio al servidor.
+      </p>
 
-        <div class="p-3 bg-slate-50 dark:bg-slate-950/40 rounded border border-slate-200 dark:border-slate-800">
-          <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200">Penguin's Eggs</h3>
-          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Repositorio oficial de Piero Proietti, documentación del CLI y empaquetamiento de sistemas (parámetro --clone).</p>
-          <a href="https://github.com/pieroproietti/penguins-eggs" target="_blank" class="text-xs text-mint hover:underline font-mono mt-1 inline-block">https://github.com/pieroproietti/penguins-eggs</a>
-        </div>
+      <h2 class="text-lg font-semibold text-slate-700 dark:text-slate-200 mt-6 mb-2">4.2 — Jupyter Notebook</h2>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        Jupyter Notebook es una herramienta de desarrollo interactivo que permite escribir y ejecutar código (sobre todo Python) por bloques o "celdas", viendo el resultado de cada una al instante, sin tener que correr todo el programa de una. En el mismo documento se mezcla código, los resultados (números, tablas, gráficos) y texto explicativo con formato. Por eso es la herramienta preferida en ciencia de datos, machine learning y educación: sirve para experimentar paso a paso, visualizar datos, probar modelos y, a la vez, documentar y compartir el trabajo de forma clara y reproducible.
+      </p>
 
-        <div class="p-3 bg-slate-50 dark:bg-slate-950/40 rounded border border-slate-200 dark:border-slate-800">
-          <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200">Ventoy Persistence</h3>
-          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Documentación oficial del gestor de arranque multiboot y especificaciones técnicas del plugin de persistencia (estructuras JSON).</p>
-          <a href="https://www.ventoy.net/en/plugin_persistence.html" target="_blank" class="text-xs text-mint hover:underline font-mono mt-1 inline-block">https://www.ventoy.net/en/plugin_persistence.html</a>
-        </div>
+      <h2 class="text-lg font-semibold text-slate-700 dark:text-slate-200 mt-6 mb-2">4.3 — Upscayl</h2>
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        Upscayl es una aplicación de código abierto que usa inteligencia artificial para escalar y mejorar imágenes (image upscaling). Toma una foto de baja resolución o pixelada y, mediante modelos de IA, la agranda agregando detalle y nitidez en vez de quedar borrosa, como pasaría con un escalado común. Es un buen ejemplo de IA "de escritorio", funcionando localmente en tu propia máquina.
+      </p>
 
-        <div class="p-3 bg-slate-50 dark:bg-slate-950/40 rounded border border-slate-200 dark:border-slate-800">
-          <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200">Debian live-boot</h3>
-          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Manual técnico (manpage) sobre los parámetros del kernel y la sintaxis de persistencia para entornos remasterizados.</p>
-          <a href="https://manpages.debian.org/testing/live-boot-doc/live-boot.7.en.html" target="_blank" class="text-xs text-mint hover:underline font-mono mt-1 inline-block">https://manpages.debian.org/testing/live-boot-doc/live-boot.7.en.html</a>
-        </div>
-
-        <div class="p-3 bg-slate-50 dark:bg-slate-950/40 rounded border border-slate-200 dark:border-slate-800">
-          <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200">GParted (GNOME Partition Editor)</h3>
-          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Documentación oficial sobre gestión de particiones y sistemas de archivos.</p>
-          <a href="https://gparted.org/" target="_blank" class="text-xs text-mint hover:underline font-mono mt-1 inline-block">https://gparted.org/</a>
-        </div>
-
-        <div class="p-3 bg-slate-50 dark:bg-slate-950/40 rounded border border-slate-200 dark:border-slate-800">
-          <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200">chntpw & TestDisk</h3>
-          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Recuperación de particiones, manipulación de archivos SAM y herramientas de diagnóstico físico.</p>
-          <a href="https://www.cgsecurity.org/" target="_blank" class="text-xs text-mint hover:underline font-mono mt-1 inline-block">https://www.cgsecurity.org/</a>
-        </div>
-
-        <div class="p-3 bg-slate-50 dark:bg-slate-950/40 rounded border border-slate-200 dark:border-slate-800">
-          <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200">Wireshark & Nmap</h3>
-          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Análisis de protocolos de red, tráfico de paquetes a bajo nivel y descubrimiento de puertos abiertos.</p>
-          <a href="https://www.wireshark.org/" target="_blank" class="text-xs text-mint hover:underline font-mono mt-1 inline-block">https://www.wireshark.org/</a>
-        </div>
+      <div class="p-4 bg-yellow-50 dark:bg-yellow-900/30 rounded-lg border border-yellow-200 dark:border-yellow-800/50 mt-6">
+        <p class="text-yellow-800 dark:text-yellow-200 text-sm">
+          <strong>Un detalle para tu instalación:</strong> en la consigna sugieren <code class="bg-yellow-100 dark:bg-yellow-900/50 px-1 py-0.5 rounded font-mono">sudo apt install flatpak</code>. Tené en cuenta que en Linux Mint, Flatpak normalmente ya viene listo y el Gestor de Software lo soporta de fábrica, así que probablemente puedas instalar Upscayl directo desde el Gestor sin tocar la terminal. Si no aparece, ahí sí corrés el comando.
+        </p>
       </div>
     `
   },
@@ -374,19 +358,122 @@ Gracias a entornos de escritorio livianos (como MATE o XFCE) y un consumo de RAM
     type: "file",
     name: "Parte 5 - Conclusión grupal.html",
     content: `
-      <h1 class="text-2xl font-bold text-slate-800 dark:text-white mb-4">Consigna 5: Conclusión Grupal</h1>
+      <h1 class="text-2xl font-bold text-slate-800 dark:text-white mb-4">Consigna 5: Conclusión grupal</h1>
+      
       <p class="text-slate-600 dark:text-slate-300 mb-4">
-        En este proyecto pusimos en práctica los conceptos de arquitectura de sistemas operativos, modularización de código gráfico y gestión de recursos integrando datos de servicio técnico real en un simulador visual premium.
+        Lo más sorprendente consideramos que fue la enorme capacidad de personalización que tiene Linux, además de la cantidad de distribuciones que existen actualmente, muchas de las cuales están orientadas a fines específicos, lo que lo vuelve atractivo para una gran multiplicidad de usuarios.
       </p>
+      
       <p class="text-slate-600 dark:text-slate-300 mb-4">
-        A continuación, presentamos un video introductorio y explicativo sobre las bases de la Inteligencia Artificial y el futuro de los sistemas de automatización inteligente:
+        Estimamos que, al principio, la dificultad más grande, es pasar de un sistema operativo predominante como Windows — donde estamos frente a un paquete de servicios definidos y cerrados— a un sistema operativo completamente diferente y expandible dependiendo de los objetivos del usuario.
       </p>
-      <div class="my-6 aspect-video rounded-lg overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800">
-        <iframe class="w-full h-full" src="https://www.youtube.com/embed/ad79nYk2kEg" title="Introduction to AI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        Lo que vemos como sorprendente es también aquello que genera al principio una especie de barrera; pero con la práctica, esto se vuelve cada vez más sencillo.
+        Hoy en día, los entornos gráficos y de escritorio ayudan de manera significativa a usuarios menos expertos.
+      </p>
+      
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        Teniendo en cuenta la experiencia que adquirimos en esta materia y con este trabajo en conjunto, concluimos que Linux es una muy buena opción como sistema operativo principal.
+        Lo que faltaría sería elegir la distribución adecuada o, en todo caso, ¡personalizar una!
+      </p>
+      
+      <p class="text-slate-600 dark:text-slate-300 mb-4">
+        La gran libertad de hacer la distribución más “propia”, la diversidad de ecosistemas ya existentes, la variedad de aplicaciones compatibles en distintos ámbitos (ofimática, edición, gaming, etc.) y la gran comunidad que existe desde hace años, siempre dispuesta a ayudar y resolver las dudas que se presenten, son, sin duda, sus mayores puntos a favor.
+      </p>
+    `
+  },
+  "/Documentos/Resolución de Parcial/Bibliografía.html": {
+    type: "file",
+    name: "Bibliografía.html",
+    content: `
+      <h1 class="text-2xl font-bold text-slate-800 dark:text-white mb-4 border-b border-slate-200 dark:border-slate-800 pb-2">Bibliografía</h1>
+      
+      <div class="space-y-4">
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+          <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-1">Linux Mint</h3>
+          <p class="text-slate-600 dark:text-slate-300 text-sm mb-2">Proyecto oficial, repositorios y documentación del entorno de escritorio Cinnamon.</p>
+          <a href="https://linuxmint.com/" target="_blank" class="text-mint hover:underline text-sm font-medium">https://linuxmint.com/</a>
+        </div>
+
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+          <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-1">Oracle VM VirtualBox</h3>
+          <p class="text-slate-600 dark:text-slate-300 text-sm mb-2">Manual de usuario, gestión de almacenamiento virtual e integración de utilidades (Guest Additions).</p>
+          <a href="https://www.virtualbox.org/manual/" target="_blank" class="text-mint hover:underline text-sm font-medium">https://www.virtualbox.org/manual/</a>
+        </div>
+
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+          <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-1">Penguin's Eggs</h3>
+          <p class="text-slate-600 dark:text-slate-300 text-sm mb-2">Repositorio oficial de Piero Proietti, documentación del CLI y empaquetamiento de sistemas (parámetro --clone).</p>
+          <a href="https://github.com/pieroproietti/penguins-eggs" target="_blank" class="text-mint hover:underline text-sm font-medium">https://github.com/pieroproietti/penguins-eggs</a>
+        </div>
+
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+          <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-1">Ventoy</h3>
+          <p class="text-slate-600 dark:text-slate-300 text-sm mb-2">Documentación oficial del gestor de arranque multiboot y especificaciones técnicas del plugin de persistencia (estructuras JSON).</p>
+          <a href="https://www.ventoy.net/en/plugin_persistence.html" target="_blank" class="text-mint hover:underline text-sm font-medium">https://www.ventoy.net/en/plugin_persistence.html</a>
+        </div>
+
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+          <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-1">Debian live-boot</h3>
+          <p class="text-slate-600 dark:text-slate-300 text-sm mb-2">Manual técnico (manpage) sobre los parámetros del kernel y la sintaxis de persistencia para entornos remasterizados.</p>
+          <a href="https://manpages.debian.org/testing/live-boot-doc/live-boot.7.en.html" target="_blank" class="text-mint hover:underline text-sm font-medium">https://manpages.debian.org/testing/live-boot-doc/live-boot.7.en.html</a>
+        </div>
+
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+          <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-1">GParted (GNOME Partition Editor)</h3>
+          <p class="text-slate-600 dark:text-slate-300 text-sm mb-2">Documentación oficial sobre gestión de particiones y sistemas de archivos.</p>
+          <a href="https://gparted.org/" target="_blank" class="text-mint hover:underline text-sm font-medium">https://gparted.org/</a>
+        </div>
+
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+          <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-1">DDRescue-GUI</h3>
+          <p class="text-slate-600 dark:text-slate-300 text-sm mb-2">Repositorio de Launchpad para la interfaz gráfica de GNU ddrescue.</p>
+          <a href="https://launchpad.net/ddrescue-gui" target="_blank" class="text-mint hover:underline text-sm font-medium">https://launchpad.net/ddrescue-gui</a>
+        </div>
+
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+          <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-1">chntpw (Offline NT Password Editor)</h3>
+          <p class="text-slate-600 dark:text-slate-300 text-sm mb-2">Documentación del proyecto original para la edición del registro de Windows y manipulación del archivo SAM.</p>
+          <a href="http://pogostick.net/~pnh/ntpasswd/" target="_blank" class="text-mint hover:underline text-sm font-medium">http://pogostick.net/~pnh/ntpasswd/</a>
+        </div>
+
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+          <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-1">CGSecurity (TestDisk & PhotoRec)</h3>
+          <p class="text-slate-600 dark:text-slate-300 text-sm mb-2">Guías paso a paso para la recuperación de particiones y extracción de datos eliminados.</p>
+          <a href="https://www.cgsecurity.org/" target="_blank" class="text-mint hover:underline text-sm font-medium">https://www.cgsecurity.org/</a>
+        </div>
+
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+          <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-1">Nmap & Zenmap</h3>
+          <p class="text-slate-600 dark:text-slate-300 text-sm mb-2">Referencia oficial del escáner de seguridad y descubrimiento de redes.</p>
+          <a href="https://nmap.org/" target="_blank" class="text-mint hover:underline text-sm font-medium">https://nmap.org/</a>
+        </div>
+
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+          <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-1">Wireshark</h3>
+          <p class="text-slate-600 dark:text-slate-300 text-sm mb-2">Guía de usuario para el análisis de protocolos y tráfico de red a bajo nivel.</p>
+          <a href="https://www.wireshark.org/" target="_blank" class="text-mint hover:underline text-sm font-medium">https://www.wireshark.org/</a>
+        </div>
+
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+          <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-1">Arduino IDE</h3>
+          <p class="text-slate-600 dark:text-slate-300 text-sm mb-2">Entorno de desarrollo oficial y referencias del lenguaje para pruebas electrónicas.</p>
+          <a href="https://www.arduino.cc/en/software" target="_blank" class="text-mint hover:underline text-sm font-medium">https://www.arduino.cc/en/software</a>
+        </div>
+
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+          <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-1">Python 3</h3>
+          <p class="text-slate-600 dark:text-slate-300 text-sm mb-2">Documentación de la biblioteca estándar, específicamente módulos os, subprocess y urllib utilizados para el aprovisionamiento.</p>
+          <a href="https://docs.python.org/3/" target="_blank" class="text-mint hover:underline text-sm font-medium">https://docs.python.org/3/</a>
+        </div>
+
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+          <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-1">Especificación Desktop Entry (freedesktop.org)</h3>
+          <p class="text-slate-600 dark:text-slate-300 text-sm mb-2">Estándar técnico utilizado para la creación de los accesos directos (.desktop) y categorías de menú.</p>
+          <a href="https://specifications.freedesktop.org/desktop-entry-spec/latest/" target="_blank" class="text-mint hover:underline text-sm font-medium">https://specifications.freedesktop.org/desktop-entry-spec/latest/</a>
+        </div>
       </div>
-      <p class="text-slate-600 dark:text-slate-300">
-        ¡Gracias por explorar nuestra resolución del parcial de Sistemas Operativos 2!
-      </p>
     `
   },
   "/Documentos/Trabajo Escrito (Google Docs).url": {
@@ -406,21 +493,6 @@ Este simulador representa un entorno de escritorio Cinnamon basado en la distrib
 ¡Explorá las carpetas, usá la terminal y configurá el entorno a tu gusto!
 
 Integrantes del grupo: Manuel Saquilán, Leandro Fernández, Franco Caraballo y Maxi Oria.`
-  },
-  "/Documentos/conclusion_grupal.txt": {
-    type: "file",
-    name: "conclusion_grupal.txt",
-    content: `=========================================
-          CONCLUSIÓN GRUPAL - SISTEMAS OPERATIVOS
-=========================================
-
-A lo largo del desarrollo de esta materia, pudimos comprender el rol crucial que tiene el Sistema Operativo como intermediario y administrador de los recursos de hardware y software. 
-
-A través de la teoría y la práctica (como el desarrollo de este simulador interactivo), comprendimos conceptos fundamentales como la gestión de procesos, la concurrencia, la sincronización de hilos, los sistemas de archivos y el manejo de memoria. 
-
-Entender el funcionamiento interno de Linux, su robustez gracias al software libre y su modelo de permisos nos dio una perspectiva invaluable como futuros profesionales de la computación. Diseñar y programar a nivel de sistema requiere rigurosidad y nos ayuda a construir software mucho más eficiente, estable y seguro.
-
-¡Una experiencia súper enriquecedora para todo el equipo!`
   },
   "/Imágenes": {
     type: "dir",
@@ -1658,7 +1730,8 @@ function initXreaderApp(container, winInstance, initData) {
     "/Documentos/Resolución de Parcial/Parte 2 - Investigacion y Experimentacion.html",
     "/Documentos/Resolución de Parcial/Parte 3 - Linux para diferentes personas.html",
     "/Documentos/Resolución de Parcial/Parte 4 - Linux, el motor de la IA.html",
-    "/Documentos/Resolución de Parcial/Parte 5 - Conclusión grupal.html"
+    "/Documentos/Resolución de Parcial/Parte 5 - Conclusión grupal.html",
+    "/Documentos/Resolución de Parcial/Bibliografía.html"
   ];
 
   // Render Sidebar index links

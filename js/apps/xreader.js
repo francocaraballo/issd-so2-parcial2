@@ -31,7 +31,8 @@ export function initXreaderApp(container, winInstance, initData) {
     "/Documentos/Resolución de Parcial/Parte 2 - Investigacion y Experimentacion.html",
     "/Documentos/Resolución de Parcial/Parte 3 - Linux para diferentes personas.html",
     "/Documentos/Resolución de Parcial/Parte 4 - Linux, el motor de la IA.html",
-    "/Documentos/Resolución de Parcial/Parte 5 - Conclusión grupal.html"
+    "/Documentos/Resolución de Parcial/Parte 5 - Conclusión grupal.html",
+    "/Documentos/Resolución de Parcial/Bibliografía.html"
   ];
 
   // Render Sidebar index links
