@@ -381,6 +381,17 @@ Gracias a entornos de escritorio livianos (como MATE o XFCE) y un consumo de RAM
       <p class="text-slate-600 dark:text-slate-300 mb-4">
         La gran libertad de hacer la distribución más “propia”, la diversidad de ecosistemas ya existentes, la variedad de aplicaciones compatibles en distintos ámbitos (ofimática, edición, gaming, etc.) y la gran comunidad que existe desde hace años, siempre dispuesta a ayudar y resolver las dudas que se presenten, son, sin duda, sus mayores puntos a favor.
       </p>
+      
+        <div class="my-6 aspect-video rounded-lg overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800">
+          <iframe 
+            class="w-full h-full" 
+            src="https://www.youtube.com/embed/8BnI1Al5JdY" 
+            title="Video de Conclusión" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
     `
   },
   "/Documentos/Resolución de Parcial/Bibliografía.html": {

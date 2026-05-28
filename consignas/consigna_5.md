@@ -10,3 +10,5 @@ Teniendo en cuenta la experiencia que adquirimos en esta materia y con este trab
 Lo que faltaría sería elegir la distribución adecuada o, en todo caso, ¡personalizar una\!
 
 La gran libertad de hacer la distribución más “propia”, la diversidad de ecosistemas ya existentes, la variedad de aplicaciones compatibles en distintos ámbitos (ofimática, edición, gaming, etc.) y la gran comunidad que existe desde hace años, siempre dispuesta a ayudar y resolver las dudas que se presenten, son, sin duda, sus mayores puntos a favor.
+
+(https://www.youtube.com/watch?v=8BnI1Al5JdY)
