@@ -36,6 +36,8 @@ ehthumbs.db
 Thumbs.db
 
 # AI Agent state
-.antigravity/
-.atl/
-.agent/
+.antigravity
+.atl
+.agent
+.agents
+.antigravitycli
